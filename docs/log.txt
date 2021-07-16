@@ -1,0 +1,1 @@
+7/15/21: Started project. Created folder and file layout structure. Created database and table.
