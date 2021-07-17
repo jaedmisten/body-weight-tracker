@@ -1,1 +1,9 @@
 7/15/21: Started project. Created folder and file layout structure. Created database and table.
+
+7/16/21: Added bootstrap grid to center content on all pages. 
+
+Updated view weights page to have select all query and var_dump dates and weights that were manually added to DB.
+Will need to create table to display this info and add edit and delete buttons if incorrect info is submitted.
+
+Trying out date and time pickers for add weights page form.
+
