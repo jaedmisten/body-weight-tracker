@@ -10,9 +10,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- Dependencies for material-datetime-picker -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>

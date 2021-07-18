@@ -1,4 +1,5 @@
 /node_modules
+/logs
 /.vs
 *.tmp
 Body-Weight-Tracker-App.docx
