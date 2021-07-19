@@ -14,3 +14,10 @@ buttons that will have functionality added later.
 
 Added app to apache vhost configuration to use bwt.site to access site.
 Site can no longer accesses jquery and bootstrap files in node_modules folder. Getting not found errors.
+
+
+7/18/21: Added gulp and set it up to move jquery and bootstrap files in /node_modules folder to /public/js/dist folder.
+May move them into specific folders in dist later.
+
+
+7/19/21: Changed folder structure. All views are currently in /public folder.

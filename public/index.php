@@ -1,7 +1,7 @@
-<?php include('views/header.php') ?>
-<br><br><br>
-<h1>Body Of Home Page</h1>
+<?php include('header.php') ?>
 
 
+<?php //include('views/homePage.php'); ?>
 
-<?php include('views/footer.php') ?>
+
+<?php include('footer.php') ?>

@@ -1,4 +1,5 @@
-<?php include('views/header.php') ?>
+<?php include('../config/connect.php') ?>
+<?php include('header.php') ?>
 <br><br><br>
 <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -39,4 +40,4 @@
     </div>
 </div>
 
-<?php include('views/footer.php') ?>
+<?php include('footer.php') ?>

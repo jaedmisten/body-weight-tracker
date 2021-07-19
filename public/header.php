@@ -1,4 +1,3 @@
-<?php include('../config/connect.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Body Weight Tracker</title>
     <!-- jQuery -->
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="js/dist/jquery.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="js/dist/bootstrap.css">
+    <script src="js/dist/bootstrap.js"></script>
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
