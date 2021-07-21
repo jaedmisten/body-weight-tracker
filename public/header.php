@@ -9,6 +9,10 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="js/dist/bootstrap.css">
     <script src="js/dist/bootstrap.js"></script>
+    <!-- jquery-datetimepicker stylesheet-->
+    <link rel="stylesheet" href="js/dist/jquery.datetimepicker.css">
+    <!-- jquery-datetimepicker -->
+    <script src="js/dist/jquery.datetimepicker.full.js"></script>
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>

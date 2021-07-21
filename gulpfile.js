@@ -17,5 +17,7 @@ exports.default = function() {
   return src("node_modules/jquery/dist/jquery.js")
     .pipe(src("node_modules/bootstrap/dist/css/bootstrap.css"))
     .pipe(src("node_modules/bootstrap/dist/js/bootstrap.js"))
+    .pipe(src("node_modules/jquery-datetimepicker/jquery.datetimepicker.css"))
+    .pipe(src("node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"))
     .pipe(dest('public/js/dist'));
 }

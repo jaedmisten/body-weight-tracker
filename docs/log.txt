@@ -21,3 +21,6 @@ May move them into specific folders in dist later.
 
 
 7/19/21: Changed folder structure. All views are currently in /public folder.
+
+
+7/20/21: Added jquery-datetimepicker for a date/time picker on the add weight page.
