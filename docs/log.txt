@@ -24,3 +24,8 @@ May move them into specific folders in dist later.
 
 
 7/20/21: Added jquery-datetimepicker for a date/time picker on the add weight page.
+
+
+7/21/21: Made updates data from form on add weights page to be posted to insertWeight.php. 
+Weight and datetime stamp are then inserted into weights table. After inserting weight the page
+is redirected the view weights page.

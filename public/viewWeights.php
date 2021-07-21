@@ -7,7 +7,7 @@
 
         <?php
         try {
-            $sql = 'SELECT * FROM weights';
+            $sql = 'SELECT * FROM weights ORDER BY date DESC';
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);

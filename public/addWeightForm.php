@@ -5,8 +5,9 @@
         <h1>Body of Add Weight Page</h1>
         <br>
 
-        <form action="src/insertWeight.php" method="post">
-            Date And Time: <input id="datetimepicker" type="text" id="dateTime" value="dateTime"><br>
+        <form action="insertWeight.php" method="post">
+            Date And Time: <input id="datetimepicker" type="text" id="dateTime" name="dateTime" value=""><br>
+            Weight (lbs): <input id="weight" type="number" step=".1" name="weight" value=""><br>
             <input type="submit" id="submit" name="submit">
         </form>
     </div>
