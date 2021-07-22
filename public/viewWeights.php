@@ -3,8 +3,6 @@
 <br><br><br>
 <div class="row">
     <div class="col-md-6 offset-md-3">
-        <h1>Body of View Weights Page</h1>
-
         <?php
         try {
             $sql = 'SELECT * FROM weights ORDER BY date DESC';

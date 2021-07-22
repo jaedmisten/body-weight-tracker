@@ -29,3 +29,7 @@ May move them into specific folders in dist later.
 7/21/21: Made updates data from form on add weights page to be posted to insertWeight.php. 
 Weight and datetime stamp are then inserted into weights table. After inserting weight the page
 is redirected the view weights page.
+
+Updated add weight form to use bootstrap styling. Started with horizontal form, but updated column size of 
+the label which moved input fields below label like regular bootstrap form. This probably looks better 
+because it uses more space on this page that has little content.
