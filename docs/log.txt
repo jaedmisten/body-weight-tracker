@@ -33,3 +33,17 @@ is redirected the view weights page.
 Updated add weight form to use bootstrap styling. Started with horizontal form, but updated column size of 
 the label which moved input fields below label like regular bootstrap form. This probably looks better 
 because it uses more space on this page that has little content.
+
+
+7/22/21: Added delete modal to view weights page when clicking delete button. Modal opens using
+the option without javascript by prefixing '#' to value of data-bs-target attribute. 
+Trying to open it with javascript or jquery to pass record id that will be sent to delete record.
+Currenty getting "Cannot read property 'classList' of undefined" error when clicking delete button.
+
+
+7/23/21: Continuing to work on delete weight record. Clicking delete now gets the id, date, and weight from
+data- attributes in the <tr> of the selected weight record and passes it to the modal. Now need to pass the
+id to backend to delete the weight. 
+
+
+7/24/21: Centered header title and buttons.

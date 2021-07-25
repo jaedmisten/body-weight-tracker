@@ -21,11 +21,11 @@
 <div class="container">
 <div class="row" style="border: 1px solid red;">
     <div class="col-md-6 offset-md-3" style="border: 1px solid black;">
-        <h1><a href="index.php">Body Weight Tracker</a></h1>
+        <h1 class="center"><a href="index.php">Body Weight Tracker</a></h1>
     </div>
 </div>
 <br>
-<div class="row">
+<div class="row center">
     <div class="col-md-3 offset-md-3"><a type="button" class="btn btn-success" href="viewWeights.php">View Weights</a></div>
     <div class="col-md-3"><a type="button" class="btn btn-success" href="addWeightForm.php">Add Weight</a></div>
 </div>
