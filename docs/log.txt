@@ -47,3 +47,9 @@ id to backend to delete the weight.
 
 
 7/24/21: Centered header title and buttons.
+
+
+7/25/21: Finished delete weight record from view weights page. 
+Currently reloading page after clicking OK on success deleted modal to remove the deleted weight record from
+the table. May change this page to get data from ajax request and make ajax request after deletion or
+edit of weight record.
