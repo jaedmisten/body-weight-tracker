@@ -15,6 +15,7 @@
     <script src="js/dist/jquery.datetimepicker.full.js"></script>
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon/favicon.png"/>
 </head>
 
 <body>
