@@ -14,7 +14,6 @@
             echo $e->getMessage();
         }
         ?>
-
         <table id="weights-table" style="width:100%">
             <tr>
                 <th>Date</th>
@@ -26,8 +25,8 @@
                 <td><?php echo $weight["date"] ?></td>
                 <td><?php echo $weight["weight"] ?></td>
                 <td>
-                    <a type="button" class="btn btn-info" href="">Edit</a>&nbsp;&nbsp;
-                    <a type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>">Delete</a>
+                    <a type="button" class="btn btn-info" href=""><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
+                    <a type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -51,7 +50,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button id="deleteConfirm" type="button" class="btn btn-warning">Delete</button>
+                    <button id="deleteConfirm" type="button" class="btn btn-warning"><i class="far fa-trash-alt"></i> Delete</button>
                 </div>
                 </div>
             </div>
