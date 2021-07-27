@@ -53,3 +53,10 @@ id to backend to delete the weight.
 Currently reloading page after clicking OK on success deleted modal to remove the deleted weight record from
 the table. May change this page to get data from ajax request and make ajax request after deletion or
 edit of weight record.
+
+
+7/26/21: Added form validation to add weight form using jquery. 
+Submit button is not enabled until the date input is a valid date and the weight input is a number.
+Needed to use input event on weight input to get the entered value. Not sure why change event did not work.
+Needed to use both input and change events to work with date input. Date picker needed change event
+and needed to use input event if date string is manually edited in the date field.
