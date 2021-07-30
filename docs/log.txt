@@ -71,3 +71,6 @@ request and responses.
 7/29/21: Added ability to edit weight record. 
 Need to update edit success modal to show old info and updated info. 
 Need to add input validation before being able to submit on the edit weight record modal.
+
+
+7/30/21: Updated edit success modal to show what the old date and weight have been updated to.

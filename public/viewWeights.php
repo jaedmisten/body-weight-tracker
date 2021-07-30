@@ -116,7 +116,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>The recorded weight was successfully updated.</p>
+                    <p>The recorded weight of<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date/Time:</strong> <span id="oldDateTime"></span><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Weight:</strong> <span id="oldWeight"></span></p>
+                    <p>Has been updated to<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Date/Time:</strong> <span id="updatedDateTime"></span><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Weight:</strong> <span id="updatedWeight"></span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="weightEditedModalClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -130,9 +131,6 @@
 
 <script>
 $('.btn-danger').click(function() {
-    console.log('Delete button clicked');
-    console.log(this);
-    console.dir(this)
     let id = $(this).data('id');
     console.log('id: ', id);
     let date = $(this).data('date');
@@ -144,7 +142,6 @@ $('.btn-danger').click(function() {
     $('#deleteWeightModal').modal('show');
 
     $('#deleteConfirm').click(function() {
-        console.log('%c#deleteWeightConfirm button clicked', 'font-size:14px;color:red;font-weight:bold;');
         console.log('id: ', id);
 
         $.ajax({
@@ -161,10 +158,6 @@ $('.btn-danger').click(function() {
 });
 
 $('.btn-info').click(function() {
-    console.log('Edit button clicked');
-    console.log(this);
-    console.dir(this);
-
     let id = $(this).data('id');
     console.log('id: ', id);
     let date = $(this).data('date');
@@ -176,7 +169,6 @@ $('.btn-info').click(function() {
     $('#editWeightModal').modal('show');
 
     $('#editSubmit').click(function() {
-        console.log('%c#editSubmit button clicked', 'font-size:14px;color:red;font-weight:bold');
         console.log('id: ', id);
         console.log('date: ', date);
         console.log('weight: ', weight);
@@ -191,8 +183,11 @@ $('.btn-info').click(function() {
             type: 'post',
             data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
             success: function (response) {
-                console.log("response: ", response);
                 $('#editWeightModal').modal('hide');
+                $('#oldDateTime').html(date);
+                $('#oldWeight').html(weight);
+                $('#updatedDateTime').html(updatedDateTime);
+                $('#updatedWeight').html(updatedWeight);
                 $('#weightEditedModal').modal('show');
             }
         });
