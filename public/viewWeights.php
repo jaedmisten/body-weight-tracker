@@ -130,6 +130,34 @@
 </div>
 
 <script>
+$(document).ready(function() {
+    $('#weightInput').on('input', function() {
+        let weight = this.value;
+        let date = $('#datetimepicker').val()
+        verifyInput(date, weight);
+    });
+
+    $('#datetimepicker').on('input', function() {
+        let date = this.value;
+        let weight = $('#weightInput').val();
+        verifyInput(date, weight);
+    });
+
+    $('#datetimepicker').on('change', function() {
+        let date = this.value;
+        let weight = $('#weightInput').val();
+        verifyInput(date, weight);
+    });
+
+    function verifyInput(date, weight) {
+        if (isNaN(weight) || weight == "" || new Date(date) == "Invalid Date") {
+            $('#editSubmit').prop('disabled', true);
+        } else {
+            $('#editSubmit').prop('disabled', false);
+        }
+    }
+});
+
 $('.btn-danger').click(function() {
     let id = $(this).data('id');
     console.log('id: ', id);

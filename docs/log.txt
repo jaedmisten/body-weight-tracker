@@ -74,3 +74,4 @@ Need to add input validation before being able to submit on the edit weight reco
 
 
 7/30/21: Updated edit success modal to show what the old date and weight have been updated to.
+Added input validation to edit modal input fields before submit button is enabled.

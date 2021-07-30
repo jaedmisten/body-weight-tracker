@@ -47,11 +47,10 @@ $(document).ready(function() {
     });
 
     function verifyInput(date, weight) {
-        console.log('verifyInput called');
-        if (!isNaN(weight) && weight != "" && new Date(date) != "Invalid Date") {
-            $('#submit').prop('disabled', false);
-        } else {
+        if (isNaN(weight) || weight == "" || new Date(date) == "Invalid Date") {
             $('#submit').prop('disabled', true);
+        } else {
+            $('#submit').prop('disabled', false);
         }
     }
 });
