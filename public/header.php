@@ -22,9 +22,9 @@
 
 <body>
 <div class="container">
-<div class="row" style="border: 1px solid red;">
-    <div class="col-md-6 offset-md-3" style="border: 1px solid black;">
-        <h1 class="center"><a href="index.php">Body Weight Tracker</a></h1>
+<div class="row header">
+    <div class="col-md-6 offset-md-3" >
+        <h1 class="center"><a class="site-title" href="index.php">Body Weight Tracker</a></h1>
     </div>
 </div>
 <br>

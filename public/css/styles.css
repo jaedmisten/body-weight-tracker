@@ -2,7 +2,20 @@
     text-align: center;
 }
 
+.site-title {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.site-title:hover {
+    color: #fff;
+}
+
+.header {
+    border-radius: 8px;
+    background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
+}
+
 #weights-table, th, td {
     border: 1px solid black;
 }
-
