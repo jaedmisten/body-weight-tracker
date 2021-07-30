@@ -25,7 +25,7 @@
                 <td><?php echo $weight["date"] ?></td>
                 <td><?php echo $weight["weight"] ?></td>
                 <td>
-                    <a type="button" class="btn btn-info" href=""><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
+                    <a type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
                     <a type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
                 </td>
             </tr>
@@ -73,6 +73,58 @@
                 </div>
             </div>
         </div>
+
+        <!-- Edit weight modal -->
+        <div class="modal fade" id="editWeightModal" tabindex="-1" aria-labelledby="editWeightModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editWeightModalLabel">Edit Weight</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>To edit this weight record, update the appropriate field and click Submit.
+                        <br>
+                        <div class="row mb-3">
+                            <label for="datetimepicker" class="col-sm-8 col-form-label">Date and Time (YYYY/MM/DD HH:MM):</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="datetimepicker" class="form-control datetime" name="dateTime" value="">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="weight" class="col-sm-3 col-form-label">Weight (LBS)</label>
+                            <div class="col-sm-10">
+                                <input type="number" id="weightInput" step=".1" class="form-control weight" name="weight" value="">
+                            </div>
+                        </div>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="editSubmit" type="button" class="btn btn-warning"><i class="far fa-edit"></i> Submit</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success editing weight modal -->
+        <div class="modal fade" id="weightEditedModal" tabindex="-1" aria-labelledby="weightEditedModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="weightEditedModalLabel">Recorded Weight Updated</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>The recorded weight was successfully updated.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="weightEditedModalClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -108,7 +160,49 @@ $('.btn-danger').click(function() {
     });
 });
 
+$('.btn-info').click(function() {
+    console.log('Edit button clicked');
+    console.log(this);
+    console.dir(this);
+
+    let id = $(this).data('id');
+    console.log('id: ', id);
+    let date = $(this).data('date');
+    let weight = $(this).data('weight');
+
+    $('#editWeightModal .modal-body .datetime').val(date);
+    $('#editWeightModal .modal-body .weight').val(weight);
+
+    $('#editWeightModal').modal('show');
+
+    $('#editSubmit').click(function() {
+        console.log('%c#editSubmit button clicked', 'font-size:14px;color:red;font-weight:bold');
+        console.log('id: ', id);
+        console.log('date: ', date);
+        console.log('weight: ', weight);
+
+        let updatedDateTime = $('#datetimepicker').val();
+        console.log('updatedDateTime: ', updatedDateTime);
+        let updatedWeight = $('#weightInput').val();
+        console.log('updatedWeight: ', updatedWeight);
+
+        $.ajax({
+            url: 'updateWeight.php',
+            type: 'post',
+            data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
+            success: function (response) {
+                console.log("response: ", response);
+                $('#editWeightModal').modal('hide');
+                $('#weightEditedModal').modal('show');
+            }
+        });
+    });
+});
+
 $('#weightDeletedModalClose').click(function() {
+    location.reload();
+});
+$('#weightEditedModalClose').click(function() {
     location.reload();
 });
 </script>

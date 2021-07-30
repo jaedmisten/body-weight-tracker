@@ -66,3 +66,8 @@ and needed to use input event if date string is manually edited in the date fiel
 Currently prints error if there is an issue with data or sql error. Need to display error if mistake
 happens. Currently PHP is used to post form data. May change this to use jquery ajax to handle
 request and responses.
+
+
+7/29/21: Added ability to edit weight record. 
+Need to update edit success modal to show old info and updated info. 
+Need to add input validation before being able to submit on the edit weight record modal.
