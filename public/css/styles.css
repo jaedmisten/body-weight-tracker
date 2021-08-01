@@ -2,6 +2,23 @@
     text-align: center;
 }
 
+body {
+    background-color: #eee;
+}
+
+.container {
+    border: 1px solid #ccc;
+    border-radius:8px;
+    background-color: #fff;
+    margin-top: 15px;
+}
+
+.header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
+}
+
 .site-title {
     color: #fff;
     text-decoration: none;
@@ -9,11 +26,6 @@
 
 a.site-title:hover {
     color: #fff;
-}
-
-.header {
-    border-radius: 8px;
-    background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
 }
 
 #weights-table, th, td {

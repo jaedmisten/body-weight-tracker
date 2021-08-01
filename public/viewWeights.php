@@ -83,7 +83,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>To edit this weight record, update the appropriate field and click Submit.
+                    <p>To edit this weight record, update the appropriate fields and then click the Submit button.
                         <br>
                         <div class="row mb-3">
                             <label for="datetimepicker" class="col-sm-8 col-form-label">Date and Time (YYYY/MM/DD HH:MM):</label>

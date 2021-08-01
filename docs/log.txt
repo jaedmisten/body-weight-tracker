@@ -77,3 +77,8 @@ Need to add input validation before being able to submit on the edit weight reco
 Added input validation to edit modal input fields before submit button is enabled.
 
 Updated header to use blue gradient and removed underline from link.
+
+
+7/31/21: Added border around site container. 
+Changed background-color of body to gray (#eee) and kept bootstrap container background-color white.
+Changed color of header buttons from green to blue (bootstrap primary).
