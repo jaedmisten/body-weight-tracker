@@ -28,6 +28,11 @@ a.site-title:hover {
     color: #fff;
 }
 
+.page-header {
+    text-align: center;
+    margin: 25px 15px;
+}
+
 #weights-table, th, td {
     border: 1px solid black;
 }

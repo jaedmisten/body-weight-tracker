@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
-<br><br><br>
 <div class="row">
     <div class="col-md-6 offset-md-3">
+        <h2 class="page-header">Add Weight Record</h2>
         <form action="insertWeight.php" method="post">
             <div class="row mb-3">
                 <label for="datetimepicker" class="col-sm-8 col-form-label">Date and Time (YYYY/MM/DD HH:MM):</label>
@@ -26,6 +26,8 @@
 
 <script>
 $(document).ready(function() {
+    $('#addWeightBtn').css('text-decoration', 'underline');
+
     $('#submit').prop('disabled', true);
 
     $('#weight').on('input', function() {

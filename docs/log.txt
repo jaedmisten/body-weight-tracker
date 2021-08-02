@@ -85,3 +85,5 @@ Changed color of header buttons from green to blue (bootstrap primary).
 
 
 8/2/21: Updated jquery-datetimepicker to disable selecting future dates.
+
+Added header title to pages and update button of current page to be underlined.

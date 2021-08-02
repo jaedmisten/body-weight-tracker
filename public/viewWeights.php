@@ -1,8 +1,8 @@
 <?php include('../config/connect.php') ?>
 <?php include('header.php') ?>
-<br><br><br>
 <div class="row">
     <div class="col-md-6 offset-md-3">
+        <h2 class="page-header">View Weight Records</h2>
         <?php
         try {
             $sql = 'SELECT * FROM weights ORDER BY date DESC';
@@ -131,6 +131,8 @@
 
 <script>
 $(document).ready(function() {
+    $('#viewWeightsBtn').css('text-decoration', 'underline');
+
     $('#weightInput').on('input', function() {
         let weight = this.value;
         let date = $('#datetimepicker').val()
