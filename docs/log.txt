@@ -79,6 +79,9 @@ Added input validation to edit modal input fields before submit button is enable
 Updated header to use blue gradient and removed underline from link.
 
 
-7/31/21: Added border around site container. 
+7/31/21: Added border around site container.
 Changed background-color of body to gray (#eee) and kept bootstrap container background-color white.
 Changed color of header buttons from green to blue (bootstrap primary).
+
+
+8/2/21: Updated jquery-datetimepicker to disable selecting future dates.

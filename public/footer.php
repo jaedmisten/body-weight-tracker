@@ -4,7 +4,9 @@
 jQuery(document).ready(function () {
 	'use strict';
 
-	jQuery('#datetimepicker').datetimepicker();
+	jQuery('#datetimepicker').datetimepicker({
+        maxDate: '+1970/01/01'
+    });
 });
 </script>
 </body>
