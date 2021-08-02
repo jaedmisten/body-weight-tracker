@@ -14,13 +14,16 @@
             echo $e->getMessage();
         }
         ?>
+        <?php if (empty($weights)): ?>
+        <p class="empty-weights-msg">There are currently no weight records to display.<br>Please click the Add Weight button to submit a weight record.</p>
+        <?php  else: ?>
         <table id="weights-table" style="width:100%">
             <tr>
                 <th>Date</th>
                 <th>Weight</th>
                 <th>Actions</th>
             </tr>
-            <?php foreach($weights as $weight) : ?>           
+            <?php foreach($weights as $weight): ?>           
             </tr>          
                 <td><?php echo $weight["date"] ?></td>
                 <td><?php echo $weight["weight"] ?></td>
@@ -31,6 +34,7 @@
             </tr>
             <?php endforeach ?>
         </table>
+        <?php endif; ?>       
 
         <!-- Delete weight confirmation modal -->
         <div class="modal fade" id="deleteWeightModal" tabindex="-1" aria-labelledby="deleteWeightModalLabel" aria-hidden="true">

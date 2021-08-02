@@ -36,3 +36,8 @@ a.site-title:hover {
 #weights-table, th, td {
     border: 1px solid black;
 }
+
+.empty-weights-msg {
+    font-size: 25px;
+    text-align: center;
+}
