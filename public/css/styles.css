@@ -33,8 +33,14 @@ a.site-title:hover {
     margin: 25px 15px;
 }
 
-#weights-table, th, td {
-    border: 1px solid black;
+thead {
+    color: white;
+    background-color: #0d6efd;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
 }
 
 .empty-weights-msg {

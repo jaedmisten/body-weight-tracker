@@ -17,12 +17,14 @@
         <?php if (empty($weights)): ?>
         <p class="empty-weights-msg">There are currently no weight records to display.<br>Please click the Add Weight button to submit a weight record.</p>
         <?php  else: ?>
-        <table id="weights-table" style="width:100%">
-            <tr>
-                <th>Date</th>
-                <th>Weight</th>
-                <th>Actions</th>
-            </tr>
+        <table id="weights-table" class="table table-bordered table-striped table-sm" style="width:100%">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
             <?php foreach($weights as $weight): ?>           
             </tr>          
                 <td><?php echo $weight["date"] ?></td>
