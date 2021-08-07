@@ -91,6 +91,11 @@ Added header title to pages and update button of current page to be underlined.
 Made updates to display message instead of table if there are no weight records.
 
 
+8/5/21: Updated style of view weights table to use bootstrap table style for smaller table and
+striped rows. Changed table header background color to match blue header buttons. I may change
+the background color to match the linear gradient to the site header.
+
+
 8/6/21: Made updates for view weights page to use AJAX to update weights table by removing a deleted
 table row or updating the table data in an updated row. Removed refreshing the page after these actions. 
 
@@ -101,3 +106,12 @@ delete or edit row buttons thats were already clicked.
 
 Currently after editing a row, the table row data will be updated, but clicking the edit button again
 will show the original data. Need to udpate the data attributes for the row.
+
+
+8/7/21: Made updates to fix the edit dialog to show correct values after the weight record has already 
+been updated. Added id to edit button that concatenates the currect weight record id to the end of the 
+button and then used jquery to select that button and update the data attributes for the element.
+
+After editing a date the updated row changes date format from '2021-01-01 00:00:00' to '2021/01/01 00:00'.
+It would probably be better to change the time from '00:00:000' to '00:00' because seconds do not
+matter for this time stamp.

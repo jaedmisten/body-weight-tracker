@@ -30,8 +30,8 @@
                 <td class="td-date"><?php echo $weight["date"] ?></td>
                 <td class="td-weight"><?php echo $weight["weight"] ?></td>
                 <td>
-                    <a type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
-                    <a type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
+                    <a id="edit-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
+                    <a id="delete-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -236,6 +236,10 @@ $('#editSubmit').click(function() {
             // Update data in the table row.
             $('#table-row-' + id + ' .td-date').html(updatedDateTime);
             $('#table-row-' + id + ' .td-weight').html(updatedWeight);
+
+            // Update data attributes for edit button of updated table row.
+            $('#edit-button-' + id).data('date', updatedDateTime);
+            $('#edit-button-' + id).data('weight', updatedWeight);
 
             $('#weightEditedModal').modal('show');
         }
