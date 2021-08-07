@@ -26,9 +26,9 @@
                 </tr>
             </thead>
             <?php foreach($weights as $weight): ?>           
-            </tr>          
-                <td><?php echo $weight["date"] ?></td>
-                <td><?php echo $weight["weight"] ?></td>
+            <tr id="table-row-<?php echo $weight["id"] ?>">          
+                <td class="td-date"><?php echo $weight["date"] ?></td>
+                <td class="td-weight"><?php echo $weight["weight"] ?></td>
                 <td>
                     <a type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
                     <a type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
@@ -37,7 +37,7 @@
             <?php endforeach ?>
         </table>
         <?php endif; ?>       
-
+        
         <!-- Delete weight confirmation modal -->
         <div class="modal fade" id="deleteWeightModal" tabindex="-1" aria-labelledby="deleteWeightModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -166,75 +166,80 @@ $(document).ready(function() {
     }
 });
 
+
+let id, date, weight;
 $('.btn-danger').click(function() {
-    let id = $(this).data('id');
+    id = $(this).data('id');
     console.log('id: ', id);
     let date = $(this).data('date');
     let weight = $(this).data('weight');
 
     $('#deleteWeightModal .modal-body .date').html(date);
     $('#deleteWeightModal .modal-body .weight').html(weight);
-
     $('#deleteWeightModal').modal('show');
+});
 
-    $('#deleteConfirm').click(function() {
-        console.log('id: ', id);
+$('#deleteConfirm').click(function() {
+    console.log('%cdeleteConfirm button has been clicked', 'color:red;font-size:15px;');
+    console.log('id: ', id);
 
-        $.ajax({
-            url: 'deleteWeight.php',
-            type: 'post',
-            data: {id: id},
-            success: function (response) {
-                console.log("response: ", response);
-                $('#deleteWeightModal').modal('hide');
-                $('#weightDeletedModal').modal('show');
-            }
-        });
+    $.ajax({
+        url: 'deleteWeight.php',
+        type: 'post',
+        data: {id: id},
+        success: function (response) {
+            console.log('%csuccess response from ajax', 'color:blue;font-size:15px;font-weight:bold;');
+            console.log("response: ", response);
+            // Remove deleted weight record table row from view.
+            $('#table-row-' + id).remove();
+            
+            $('#deleteWeightModal').modal('hide');
+            $('#weightDeletedModal').modal('show');
+        }
     });
 });
 
 $('.btn-info').click(function() {
-    let id = $(this).data('id');
+    id = $(this).data('id');
     console.log('id: ', id);
-    let date = $(this).data('date');
-    let weight = $(this).data('weight');
+    date = $(this).data('date');
+    weight = $(this).data('weight');
 
     $('#editWeightModal .modal-body .datetime').val(date);
     $('#editWeightModal .modal-body .weight').val(weight);
 
     $('#editWeightModal').modal('show');
+});
 
-    $('#editSubmit').click(function() {
-        console.log('id: ', id);
-        console.log('date: ', date);
-        console.log('weight: ', weight);
+$('#editSubmit').click(function() {
+    console.log('edit submit button has been clicked');
+    console.log('id: ', id);
+    console.log('date: ', date);
+    console.log('weight: ', weight);
 
-        let updatedDateTime = $('#datetimepicker').val();
-        console.log('updatedDateTime: ', updatedDateTime);
-        let updatedWeight = $('#weightInput').val();
-        console.log('updatedWeight: ', updatedWeight);
+    let updatedDateTime = $('#datetimepicker').val();
+    console.log('updatedDateTime: ', updatedDateTime);
+    let updatedWeight = $('#weightInput').val();
+    console.log('updatedWeight: ', updatedWeight);
 
-        $.ajax({
-            url: 'updateWeight.php',
-            type: 'post',
-            data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
-            success: function (response) {
-                $('#editWeightModal').modal('hide');
-                $('#oldDateTime').html(date);
-                $('#oldWeight').html(weight);
-                $('#updatedDateTime').html(updatedDateTime);
-                $('#updatedWeight').html(updatedWeight);
-                $('#weightEditedModal').modal('show');
-            }
-        });
+    $.ajax({
+        url: 'updateWeight.php',
+        type: 'post',
+        data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
+        success: function (response) {
+            $('#editWeightModal').modal('hide');
+            $('#oldDateTime').html(date);
+            $('#oldWeight').html(weight);
+            $('#updatedDateTime').html(updatedDateTime);
+            $('#updatedWeight').html(updatedWeight);
+
+            // Update data in the table row.
+            $('#table-row-' + id + ' .td-date').html(updatedDateTime);
+            $('#table-row-' + id + ' .td-weight').html(updatedWeight);
+
+            $('#weightEditedModal').modal('show');
+        }
     });
-});
-
-$('#weightDeletedModalClose').click(function() {
-    location.reload();
-});
-$('#weightEditedModalClose').click(function() {
-    location.reload();
 });
 </script>
 

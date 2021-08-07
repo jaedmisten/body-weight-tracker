@@ -89,3 +89,15 @@ Changed color of header buttons from green to blue (bootstrap primary).
 Added header title to pages and update button of current page to be underlined.
 
 Made updates to display message instead of table if there are no weight records.
+
+
+8/6/21: Made updates for view weights page to use AJAX to update weights table by removing a deleted
+table row or updating the table data in an updated row. Removed refreshing the page after these actions. 
+
+Needed to move the functions when clicking confirm buttons that make XHR's for delete and edit out of 
+being inner functions to table buttons because clicking a button would bind it and then clicking 
+multiple different table row buttons to delete or edit would make multiple XHR's for the confirm 
+delete or edit row buttons thats were already clicked.
+
+Currently after editing a row, the table row data will be updated, but clicking the edit button again
+will show the original data. Need to udpate the data attributes for the row.

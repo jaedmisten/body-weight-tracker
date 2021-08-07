@@ -12,4 +12,3 @@ if ($_POST['id'] && is_numeric($_POST['id'])) {
         echo 'Error: ' . $e->getCode() . ' - ' . $e->getMessage();
     }
 }
-
