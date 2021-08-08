@@ -56,8 +56,8 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button id="deleteConfirm" type="button" class="btn btn-warning"><i class="far fa-trash-alt"></i> Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="deleteConfirm" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
                 </div>
                 </div>
             </div>
@@ -132,7 +132,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <script src="js/viewWeights.js"></script>

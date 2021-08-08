@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 
 let id, date, weight;
-$('.btn-danger').click(function() {
+$('[id^=delete-button-]').click(function() {
     id = $(this).data('id');
     console.log('id: ', id);
     let date = $(this).data('date');
@@ -61,7 +61,7 @@ $('#deleteConfirm').click(function() {
     });
 });
 
-$('.btn-info').click(function() {
+$('[id^=edit-button-]').click(function() {
     id = $(this).data('id');
     console.log('id: ', id);
     date = $(this).data('date');
@@ -99,9 +99,11 @@ $('#editSubmit').click(function() {
             $('#table-row-' + id + ' .td-date').html(updatedDateTime);
             $('#table-row-' + id + ' .td-weight').html(updatedWeight);
 
-            // Update data attributes for edit button of updated table row.
+            // Update data attributes for edit and delete buttons of updated table row.
             $('#edit-button-' + id).data('date', updatedDateTime);
             $('#edit-button-' + id).data('weight', updatedWeight);
+            $('#delete-button-' + id).data('date', updatedDateTime);
+            $('#delete-button-' + id).data('weight', updatedWeight);
 
             $('#weightEditedModal').modal('show');
         }

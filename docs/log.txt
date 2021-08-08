@@ -121,3 +121,10 @@ matter for this time stamp.
 
 Changed the date format on the site to be '01/01/2021 00:00' instead of '2021-01-01 00:00:00'. This 
 change was made on date time picker, forms, view weights table, and modals.
+
+On view weights page, updated jquery selectors to for clicking edit and delete buttons to use wildcards on 
+the id's instead of the class of the button. The wildcard selectors were $('[id^=delete-button-]') and 
+$('[id^=edit-button-]').
+
+Fixed bug where after editing a row if you clicked delete the old info would be listed in the confirmation
+modal. Needed to update the data attributes of the delete button of the edited row.
