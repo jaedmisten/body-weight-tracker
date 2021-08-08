@@ -115,3 +115,9 @@ button and then used jquery to select that button and update the data attributes
 After editing a date the updated row changes date format from '2021-01-01 00:00:00' to '2021/01/01 00:00'.
 It would probably be better to change the time from '00:00:000' to '00:00' because seconds do not
 matter for this time stamp.
+
+
+8/8/21: Moved js scripts for view weights page and add weight record page into separate js files in js folder.
+
+Changed the date format on the site to be '01/01/2021 00:00' instead of '2021-01-01 00:00:00'. This 
+change was made on date time picker, forms, view weights table, and modals.

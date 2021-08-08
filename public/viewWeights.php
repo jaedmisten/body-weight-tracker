@@ -28,11 +28,11 @@
             </thead>
             <?php foreach($weights as $weight): ?>           
             <tr id="table-row-<?php echo $weight["id"] ?>">          
-                <td class="td-date"><?php echo $weight["date"] ?></td>
-                <td class="td-weight"><?php echo $weight["weight"] ?></td>
+                <td class="td-date"><?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?></td>
+                <td class="td-weight"><?php echo $weight["weight"]; ?></td>
                 <td>
-                    <a id="edit-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
-                    <a id="delete-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo $weight["date"]; ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
+                    <a id="edit-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
+                    <a id="delete-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
                 </td>
             </tr>
             <?php endforeach ?>
