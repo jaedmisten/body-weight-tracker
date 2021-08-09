@@ -108,7 +108,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button id="editSubmit" type="button" class="btn btn-warning"><i class="far fa-edit"></i> Submit</button>
+                    <button id="editSubmit" type="button" class="btn btn-primary"><i class="far fa-edit"></i> Submit</button>
                 </div>
                 </div>
             </div>

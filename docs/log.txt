@@ -128,3 +128,7 @@ $('[id^=edit-button-]').
 
 Fixed bug where after editing a row if you clicked delete the old info would be listed in the confirmation
 modal. Needed to update the data attributes of the delete button of the edited row.
+
+
+8/9/21: Updated background of header buttons, table header, and modal headers to use the same gradient
+as the header.

@@ -29,6 +29,6 @@
 </div>
 <br>
 <div class="row center">
-    <div class="col-md-3 offset-md-3"><a type="button" id="viewWeightsBtn" class="btn btn-primary" href="viewWeights.php">View Weights</a></div>
-    <div class="col-md-3"><a type="button" id="addWeightBtn" class="btn btn-primary" href="addWeightForm.php">Add Weight</a></div>
+    <div class="col-md-3 offset-md-3"><a type="button" id="viewWeightsBtn" class="btn btn-primary gradient" href="viewWeights.php">View Weights</a></div>
+    <div class="col-md-3"><a type="button" id="addWeightBtn" class="btn btn-primary gradient" href="addWeightForm.php">Add Weight</a></div>
 </div>
