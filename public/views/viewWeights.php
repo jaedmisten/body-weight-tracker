@@ -1,4 +1,4 @@
-<?php include('../config/connect.php') ?>
+<?php include('../../config/connect.php') ?>
 <?php include('header.php') ?>
 
 <div class="row">
@@ -134,5 +134,5 @@
         </div>
     </div>
 </div>
-<script src="js/viewWeights.js"></script>
+<script src="../js/viewWeights.js"></script>
 <?php include('footer.php') ?>

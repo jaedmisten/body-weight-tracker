@@ -46,7 +46,7 @@ $('#deleteConfirm').click(function() {
     console.log('id: ', id);
 
     $.ajax({
-        url: 'deleteWeight.php',
+        url: '../deleteWeight.php',
         type: 'post',
         data: {id: id},
         success: function (response) {
@@ -85,7 +85,7 @@ $('#editSubmit').click(function() {
     console.log('updatedWeight: ', updatedWeight);
 
     $.ajax({
-        url: 'updateWeight.php',
+        url: '../updateWeight.php',
         type: 'post',
         data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
         success: function (response) {

@@ -132,3 +132,7 @@ modal. Needed to update the data attributes of the delete button of the edited r
 
 8/9/21: Updated background of header buttons, table header, and modal headers to use the same gradient
 as the header.
+
+
+8/10/21: Moved all view files from /public to /public/views. Updated all the needed links to script files
+and php files.

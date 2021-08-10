@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $pdo->prepare($sql);
             $result = $stmt->execute([$weight, $dateTime]);
             if ($result) {
-                header('Location: viewWeights.php');
+                header('Location: views/viewWeights.php');
             } else {
                 echo "THERE WAS AN ERROR INSERTING WEIGHT";
             }
