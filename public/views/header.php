@@ -22,13 +22,13 @@
 
 <body>
 <div class="container">
-<div class="row header">
-    <div class="col-md-6 offset-md-3" >
-        <h1 class="center"><a class="site-title" href="home.php">Body Weight Tracker</a></h1>
+    <div class="row header">
+        <div class="col-md-6 offset-md-3" >
+            <h1 class="center"><a class="site-title" href="home.php">Body Weight Tracker</a></h1>
+        </div>
     </div>
-</div>
-<br>
-<div class="row center">
-    <div class="col-md-3 offset-md-3"><a type="button" id="viewWeightsBtn" class="btn btn-primary gradient" href="viewWeights.php">View Weights</a></div>
-    <div class="col-md-3"><a type="button" id="addWeightBtn" class="btn btn-primary gradient" href="addWeightForm.php">Add Weight</a></div>
-</div>
+    <br>
+    <div class="row center">
+        <div class="col-md-3 offset-md-3"><a type="button" id="viewWeightsBtn" class="btn btn-primary gradient" href="viewWeights.php">View Weights</a></div>
+        <div class="col-md-3"><a type="button" id="addWeightBtn" class="btn btn-primary gradient" href="addWeightForm.php">Add Weight</a></div>
+    </div>

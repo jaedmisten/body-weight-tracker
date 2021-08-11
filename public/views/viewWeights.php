@@ -1,6 +1,5 @@
 <?php include('../../config/connect.php') ?>
 <?php include('header.php') ?>
-
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h2 class="page-header">View Weight Records</h2>

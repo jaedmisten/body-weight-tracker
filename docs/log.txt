@@ -136,3 +136,6 @@ as the header.
 
 8/10/21: Moved all view files from /public to /public/views. Updated all the needed links to script files
 and php files.
+
+
+8/11/21: Added fitness motivational videos to home page.
