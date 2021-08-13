@@ -24,6 +24,3 @@ if (isset($id) && isset($dateTime) && isset($weight)) {
     echo "Incorrect data to insert. Will need to redirect to form with error.";
     header('HTTP/1.1 500 Incorrect Data');
 }
-
-
-

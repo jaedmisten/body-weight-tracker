@@ -32,7 +32,6 @@ $(document).ready(function() {
 let id, date, weight;
 $('[id^=delete-button-]').click(function() {
     id = $(this).data('id');
-    console.log('id: ', id);
     let date = $(this).data('date');
     let weight = $(this).data('weight');
 
@@ -42,28 +41,26 @@ $('[id^=delete-button-]').click(function() {
 });
 
 $('#deleteConfirm').click(function() {
-    console.log('%cdeleteConfirm button has been clicked', 'color:red;font-size:15px;');
-    console.log('id: ', id);
-
     $.ajax({
         url: '../deleteWeight.php',
         type: 'post',
         data: {id: id},
         success: function (response) {
-            console.log('%csuccess response from ajax', 'color:blue;font-size:15px;font-weight:bold;');
-            console.log("response: ", response);
             // Remove deleted weight record table row from view.
             $('#table-row-' + id).remove();
             
             $('#deleteWeightModal').modal('hide');
             $('#weightDeletedModal').modal('show');
+        },
+        error: function (response) {
+            $('#deleteWeightModal').modal('hide');
+            $('#errorDeletingWeightModal').modal('show');
         }
     });
 });
 
 $('[id^=edit-button-]').click(function() {
     id = $(this).data('id');
-    console.log('id: ', id);
     date = $(this).data('date');
     weight = $(this).data('weight');
 
@@ -74,15 +71,8 @@ $('[id^=edit-button-]').click(function() {
 });
 
 $('#editSubmit').click(function() {
-    console.log('edit submit button has been clicked');
-    console.log('id: ', id);
-    console.log('date: ', date);
-    console.log('weight: ', weight);
-
     let updatedDateTime = $('#datetimepicker').val();
-    console.log('updatedDateTime: ', updatedDateTime);
     let updatedWeight = $('#weightInput').val();
-    console.log('updatedWeight: ', updatedWeight);
 
     $.ajax({
         url: '../updateWeight.php',
@@ -106,6 +96,10 @@ $('#editSubmit').click(function() {
             $('#delete-button-' + id).data('weight', updatedWeight);
 
             $('#weightEditedModal').modal('show');
+        },
+        error: function (response) {
+            $('#editWeightModal').modal('hide');
+            $('#errorEditingWeightModal').modal('show');         
         }
     });
 });

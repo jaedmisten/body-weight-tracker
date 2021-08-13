@@ -56,3 +56,8 @@ th, td {
     background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
     color: white;
 }
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+}

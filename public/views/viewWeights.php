@@ -80,6 +80,24 @@
             </div>
         </div>
 
+        <!-- Error deleting weight modal -->
+        <div class="modal fade" id="errorDeletingWeightModal" tabindex="-1" aria-labelledby="errorDeletingWeightModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorDeletingWeightModalLabel">Error Deleting Weight</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="error-msg">There was an error deleting the recorded weight.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="errorDeletingWeightModalClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Edit weight modal -->
         <div class="modal fade" id="editWeightModal" tabindex="-1" aria-labelledby="editWeightModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -127,6 +145,24 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="weightEditedModalClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error editing weight modal -->
+        <div class="modal fade" id="errorEditingWeightModal" tabindex="-1" aria-labelledby="errorEditingWeightModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorEditingWeightModalLabel">Error Updating Weight</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="error-msg">There was an error updating the recorded weight.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="errorEditingWeightModalClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
                 </div>
             </div>
