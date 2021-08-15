@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('HTTP/1.1 500 Insert Of Weight Record Failed');
         }
     } else {
-        echo "Incorrect data to insert. Will need to redirect to form with error.";
         header('HTTP/1.1 500 Incorrect Data');
     }
 }

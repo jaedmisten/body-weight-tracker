@@ -143,3 +143,6 @@ and php files.
 
 8/13/21: Added error modals if error response is returned from deleting or updating a weight record.
 Removed console.log messages from viewWeights.js.
+
+
+8/15/21: Created custom pages for HTTP error codes for 404 missing pages and 500 server errors.
