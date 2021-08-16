@@ -146,3 +146,7 @@ Removed console.log messages from viewWeights.js.
 
 
 8/15/21: Created custom pages for HTTP error codes for 404 missing pages and 500 server errors.
+
+After moving php view files to /public/views going straight to the root of the site gave 404 errors
+when clicking links. Updated the links to use absolute urls to the views folder. 
+Should try to use pretty urls at some point to not show the url slugs like /views/addWeightForm.php.
