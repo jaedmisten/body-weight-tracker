@@ -13,11 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = 'INSERT INTO weights (`weight`, `date`) VALUES (?, ?)';
             $stmt = $pdo->prepare($sql);
             $result = $stmt->execute([$weight, $dateTime]);
-            if ($result) {
-                header('Location: views/viewWeights.php');
-            } else {
-                echo "THERE WAS AN ERROR INSERTING WEIGHT";
-            }
         } catch (PDOException $e) {
             echo '<pre>';
             print_r($e);
@@ -29,4 +24,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('HTTP/1.1 500 Incorrect Data');
     }
 }
-

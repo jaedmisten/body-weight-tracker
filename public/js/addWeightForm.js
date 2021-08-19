@@ -28,4 +28,24 @@ $(document).ready(function() {
             $('#submit').prop('disabled', false);
         }
     }
+
+    $('#submit').click(function(e) {
+        e.preventDefault();
+        let dateTime = $('#datetimepicker').val();
+        console.log('date: ', dateTime);
+        let weight = $('#weight').val();
+        console.log('weight: ', weight);
+
+        $.ajax({
+            url: '../insertWeight.php',
+            type: 'post',
+            data: {dateTime: dateTime, weight: weight},
+            success: function (response) {
+                window.location.replace('/views/viewWeights.php');
+            },
+            error: function (response) {
+                console.log('%cError: inserting weight', 'color:red;font-weight:bold;');
+            }
+        });
+    });
 });
