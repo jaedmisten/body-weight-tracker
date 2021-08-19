@@ -2,6 +2,7 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h2 class="page-header">Add Weight Record</h2>
+        <div class="add-weight-error-msg"></div>
         <form>
             <div class="row mb-3">
                 <label for="datetimepicker" class="col-sm-8 col-form-label">Date and Time (YYYY/MM/DD HH:MM):</label>
@@ -21,7 +22,7 @@
                 </div>
             </div>
         </form>
-    </div> 
+    </div>
 </div>
 <script src="../js/addWeightForm.js"></script>
 <?php include('footer.php') ?>

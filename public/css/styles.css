@@ -61,3 +61,8 @@ th, td {
     color: red;
     font-weight: bold;
 }
+
+.add-weight-error-msg {
+    color: red;
+    font-weight: bold;
+}

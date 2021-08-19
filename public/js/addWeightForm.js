@@ -44,7 +44,7 @@ $(document).ready(function() {
                 window.location.replace('/views/viewWeights.php');
             },
             error: function (response) {
-                console.log('%cError: inserting weight', 'color:red;font-weight:bold;');
+                $('.add-weight-error-msg').html("There was an error inserting this weight record. Please check the input.");
             }
         });
     });
