@@ -32,9 +32,7 @@ $(document).ready(function() {
     $('#submit').click(function(e) {
         e.preventDefault();
         let dateTime = $('#datetimepicker').val();
-        console.log('date: ', dateTime);
         let weight = $('#weight').val();
-        console.log('weight: ', weight);
 
         $.ajax({
             url: '../insertWeight.php',
