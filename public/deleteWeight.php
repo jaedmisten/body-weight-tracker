@@ -9,6 +9,6 @@ if ($_POST['id'] && is_numeric($_POST['id'])) {
         $result = $stmt->execute([$id]);
         echo $result;
     } catch (PDOException $e) {
-        echo 'Error: ' . $e->getCode() . ' - ' . $e->getMessage();
+        header('HTTP/1.1 500 Deleting Weight Record Failed');
     }
 }

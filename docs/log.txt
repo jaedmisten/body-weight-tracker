@@ -155,4 +155,8 @@ Should try to use pretty urls at some point to not show the url slugs like /view
 8/19/21: Changed add weight form to use jquery ajax to post data instead of php posting form. Will
 make it easier to display errors for inserting weight records.
 
-Added error message if to add weights form if unable to insert weight record.
+Added error message to add weights form if unable to insert weight record.
+
+
+8/22/21: Updated CRUD operations so that if an exception is thrown a 500 error is returned instead of
+displaying the exception message.

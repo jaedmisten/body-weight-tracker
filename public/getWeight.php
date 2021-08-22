@@ -10,7 +10,7 @@ if ($_POST['id'] && is_numeric($_POST['id'])) {
         $weightRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($weightRow);
     } catch (PDOException $e) {
-        echo 'Error: ' . $e->getCode() . ' - ' . $e->getMessage();
+        header('HTTP/1.1 500 Retrieval Of Weight Record Failed');
     }
 }
 

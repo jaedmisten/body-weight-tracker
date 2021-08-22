@@ -18,7 +18,7 @@ if (isset($id) && isset($dateTime) && isset($weight)) {
         $result = $stmt->execute([$weight, $dateTime, $id]);
         echo $result;
     } catch (PDOException $e) {
-        echo 'Error: ' . $e->getCode() . ' - ' . $e->getMessage();
+        header('HTTP/1.1 500 Update Of Weight Record Failed');
     }
 } else {
     echo "Incorrect data to insert. Will need to redirect to form with error.";
