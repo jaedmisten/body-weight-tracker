@@ -47,6 +47,11 @@ th, td {
     vertical-align: middle;
 }
 
+a.header-link {
+    color: #fff;
+    text-decoration: none;
+}
+
 .empty-weights-msg {
     font-size: 25px;
     text-align: center;

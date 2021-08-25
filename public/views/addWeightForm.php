@@ -5,7 +5,7 @@
         <div class="add-weight-error-msg"></div>
         <form>
             <div class="row mb-3">
-                <label for="datetimepicker" class="col-sm-8 col-form-label">Date and Time (YYYY/MM/DD HH:MM):</label>
+                <label for="datetimepicker" class="col-sm-8 col-form-label">Date and Time (YYYY/MM/DD HH:MM)</label>
                 <div class="col-sm-10">
                     <input type="text" id="datetimepicker" class="form-control" name="dateTime" value="">
                 </div>

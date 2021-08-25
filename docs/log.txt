@@ -160,3 +160,11 @@ Added error message to add weights form if unable to insert weight record.
 
 8/22/21: Updated CRUD operations so that if an exception is thrown a 500 error is returned instead of
 displaying the exception message.
+
+
+8/24/21: Made date and weights columns sortable for the view weights table. Made the column link headers a 
+link to the view weights page with query parameters for the column to order by and the order (ASC or DESC).
+Used $_GET to assign the query parameters to variables for the sql query.
+Caret up or down icon is displayed next to the sorted column. Currently table column size gets wider when 
+icon is displayed. Need to fix so that table column size remains the same regardless of icon being displayed
+or not.

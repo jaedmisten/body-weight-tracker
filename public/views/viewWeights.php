@@ -5,7 +5,17 @@
         <h2 class="page-header">View Weight Records</h2>
         <?php
         try {
-            $sql = 'SELECT * FROM weights ORDER BY date DESC';
+            if (!empty($_GET['orderByCol']) && (strtolower($_GET['orderByCol']) == 'date' || strtolower($_GET['orderByCol']) == 'weight')) {
+                $orderByCol = $_GET['orderByCol'];
+            } else {
+                $orderByCol = 'date';
+            }
+            if (!empty($_GET['order']) && (strtolower($_GET['order']) == 'asc' || strtolower($_GET['order']) == 'desc')) {
+                $order = $_GET['order'];
+            } else {
+                $order = 'DESC';
+            }
+            $sql = 'SELECT * FROM weights ORDER BY ' . $orderByCol . ' ' . $order;
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -20,8 +30,8 @@
         <table id="weights-table" class="table table-bordered table-striped table-sm" style="width:100%">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Weight</th>
+                    <th scope="col"><?php if ($orderByCol == 'date') $order = (strtolower($order) == 'desc') ? 'ASC' : 'DESC'; ?><a class="header-link" href="/views/viewWeights.php?orderByCol=date&order=<?php echo $order; ?>">Date <?php if ($orderByCol == 'date') echo (strtolower($order) == 'asc') ? '<i class="fas fa-caret-down"></i>' : '<i class="fas fa-caret-up"></i>'; ?></a></th>
+                    <th scope="col"><?php if ($orderByCol == 'weight') $order; ?><?php $order = (strtolower($order) == 'desc') ? 'ASC' : 'DESC'; ?><a class="header-link" href="/views/viewWeights.php?orderByCol=weight&order=<?php echo $order; ?>">Weight <?php if ($orderByCol == 'weight') echo (strtolower($order) == 'asc') ? '<i class="fas fa-caret-down"></i>' : '<i class="fas fa-caret-up"></i>'; ?></a></th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
