@@ -1,8 +1,10 @@
 <?php include('../../config/connect.php') ?>
 <?php include('header.php') ?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h2 class="page-header">View Weight Records</h2>
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
         <?php
         try {
             if (!empty($_GET['orderByCol']) && (strtolower($_GET['orderByCol']) == 'date' || strtolower($_GET['orderByCol']) == 'weight')) {
@@ -180,4 +182,27 @@
     </div>
 </div>
 <script src="../js/viewWeights.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    let weightObjects = <?php echo json_encode($weights); ?>;
+    let weights = [['Date', 'Weight']];
+    for (let i = 0; i < weightObjects.length; i++) {
+        weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
+    }
+    var data = google.visualization.arrayToDataTable(weights);
+
+    var options = {
+        title: 'Weights By Date',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+}
+</script>
 <?php include('footer.php') ?>

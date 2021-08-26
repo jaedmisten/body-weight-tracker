@@ -168,3 +168,14 @@ Used $_GET to assign the query parameters to variables for the sql query.
 Caret up or down icon is displayed next to the sorted column. Currently table column size gets wider when 
 icon is displayed. Need to fix so that table column size remains the same regardless of icon being displayed
 or not.
+
+
+8/26/21: Added Google line chart to view weights page. Needed to assign the php $weights variable to a javascript
+variable by using: let weightObjects = <?php echo json_encode($weights); ?>;
+Then updated this array of objects to be an array of arrays without the id and using the first element as the 
+headers of the chart.
+    let weightObjects = <?php echo json_encode($weights); ?>;
+    let weights = [['Date', 'Weight']]; 
+    for (let i = 0; i < weightObjects.length; i++) {
+        weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
+    }
