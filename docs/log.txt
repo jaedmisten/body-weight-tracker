@@ -179,3 +179,6 @@ headers of the chart.
     for (let i = 0; i < weightObjects.length; i++) {
         weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
     }
+
+
+8/27/21: Made updates to only show chart if there are at least five weight records.

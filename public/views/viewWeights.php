@@ -4,50 +4,54 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h2 class="page-header">View Weight Records</h2>
-        <div id="curve_chart" style="width: 900px; height: 500px"></div>
         <?php
-        try {
-            if (!empty($_GET['orderByCol']) && (strtolower($_GET['orderByCol']) == 'date' || strtolower($_GET['orderByCol']) == 'weight')) {
-                $orderByCol = $_GET['orderByCol'];
-            } else {
-                $orderByCol = 'date';
+            try {
+                if (!empty($_GET['orderByCol']) && (strtolower($_GET['orderByCol']) == 'date' || strtolower($_GET['orderByCol']) == 'weight')) {
+                    $orderByCol = $_GET['orderByCol'];
+                } else {
+                    $orderByCol = 'date';
+                }
+                if (!empty($_GET['order']) && (strtolower($_GET['order']) == 'asc' || strtolower($_GET['order']) == 'desc')) {
+                    $order = $_GET['order'];
+                } else {
+                    $order = 'DESC';
+                }
+                $sql = 'SELECT * FROM weights ORDER BY ' . $orderByCol . ' ' . $order;
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                var_dump($e);
+                echo $e->getMessage();
             }
-            if (!empty($_GET['order']) && (strtolower($_GET['order']) == 'asc' || strtolower($_GET['order']) == 'desc')) {
-                $order = $_GET['order'];
-            } else {
-                $order = 'DESC';
-            }
-            $sql = 'SELECT * FROM weights ORDER BY ' . $orderByCol . ' ' . $order;
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            var_dump($e);
-            echo $e->getMessage();
-        }
         ?>
         <?php if (empty($weights)): ?>
-        <p class="empty-weights-msg">There are currently no weight records to display.<br>Please click the Add Weight button to submit a weight record.</p>
+            <p class="empty-weights-msg">There are currently no weight records to display.<br>Please click the Add Weight button to submit a weight record.</p>
         <?php  else: ?>
-        <table id="weights-table" class="table table-bordered table-striped table-sm" style="width:100%">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col"><?php if ($orderByCol == 'date') $order = (strtolower($order) == 'desc') ? 'ASC' : 'DESC'; ?><a class="header-link" href="/views/viewWeights.php?orderByCol=date&order=<?php echo $order; ?>">Date <?php if ($orderByCol == 'date') echo (strtolower($order) == 'asc') ? '<i class="fas fa-caret-down"></i>' : '<i class="fas fa-caret-up"></i>'; ?></a></th>
-                    <th scope="col"><?php if ($orderByCol == 'weight') $order; ?><?php $order = (strtolower($order) == 'desc') ? 'ASC' : 'DESC'; ?><a class="header-link" href="/views/viewWeights.php?orderByCol=weight&order=<?php echo $order; ?>">Weight <?php if ($orderByCol == 'weight') echo (strtolower($order) == 'asc') ? '<i class="fas fa-caret-down"></i>' : '<i class="fas fa-caret-up"></i>'; ?></a></th>
-                    <th scope="col">Actions</th>
+            <?php if (count($weights) >= 5): ?>
+                <div id="curve_chart" style="width: 900px; height: 500px"></div>
+            <?php else: ?>
+                <p class="charts-msg">A line chart will be available when there is a least five weight records.</p>
+            <?php endif; ?>
+            <table id="weights-table" class="table table-bordered table-striped table-sm" style="width:100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"><?php if ($orderByCol == 'date') $order = (strtolower($order) == 'desc') ? 'ASC' : 'DESC'; ?><a class="header-link" href="/views/viewWeights.php?orderByCol=date&order=<?php echo $order; ?>">Date <?php if ($orderByCol == 'date') echo (strtolower($order) == 'asc') ? '<i class="fas fa-caret-down"></i>' : '<i class="fas fa-caret-up"></i>'; ?></a></th>
+                        <th scope="col"><?php if ($orderByCol == 'weight') $order; ?><?php $order = (strtolower($order) == 'desc') ? 'ASC' : 'DESC'; ?><a class="header-link" href="/views/viewWeights.php?orderByCol=weight&order=<?php echo $order; ?>">Weight <?php if ($orderByCol == 'weight') echo (strtolower($order) == 'asc') ? '<i class="fas fa-caret-down"></i>' : '<i class="fas fa-caret-up"></i>'; ?></a></th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <?php foreach($weights as $weight): ?>           
+                <tr id="table-row-<?php echo $weight["id"] ?>">          
+                    <td class="td-date"><?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?></td>
+                    <td class="td-weight"><?php echo $weight["weight"]; ?></td>
+                    <td>
+                        <a id="edit-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
+                        <a id="delete-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
+                    </td>
                 </tr>
-            </thead>
-            <?php foreach($weights as $weight): ?>           
-            <tr id="table-row-<?php echo $weight["id"] ?>">          
-                <td class="td-date"><?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?></td>
-                <td class="td-weight"><?php echo $weight["weight"]; ?></td>
-                <td>
-                    <a id="edit-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-info" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-edit"></i> Edit</a>&nbsp;&nbsp;
-                    <a id="delete-button-<?php echo $weight["id"] ?>" type="button" class="btn btn-danger" data-id="<?php echo $weight["id"]; ?>" data-date="<?php echo date("m/d/Y H:i", strtotime($weight["date"])); ?>" data-weight="<?php echo $weight["weight"]; ?>"><i class="far fa-trash-alt"></i> Delete</a>
-                </td>
-            </tr>
-            <?php endforeach ?>
-        </table>
+                <?php endforeach; ?>
+            </table>
         <?php endif; ?>       
         
         <!-- Delete weight confirmation modal -->
@@ -183,26 +187,34 @@
 </div>
 <script src="../js/viewWeights.js"></script>
 <script type="text/javascript">
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-    let weightObjects = <?php echo json_encode($weights); ?>;
+let weightObjects = <?php echo json_encode($weights); ?>;
+if (weightObjects.length >= 5) {
     let weights = [['Date', 'Weight']];
     for (let i = 0; i < weightObjects.length; i++) {
         weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
     }
-    var data = google.visualization.arrayToDataTable(weights);
+    
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-    var options = {
-        title: 'Weights By Date',
-        curveType: 'function',
-        legend: { position: 'bottom' }
-    };
+    function drawChart() {
+        let weightObjects = <?php echo json_encode($weights); ?>;
+        let weights = [['Date', 'Weight']];
+        for (let i = 0; i < weightObjects.length; i++) {
+            weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
+        }
+        var data = google.visualization.arrayToDataTable(weights);
 
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var options = {
+            title: 'Weights By Date',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
 
-    chart.draw(data, options);
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
 }
 </script>
 <?php include('footer.php') ?>

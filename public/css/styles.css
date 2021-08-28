@@ -57,6 +57,11 @@ a.header-link {
     text-align: center;
 }
 
+.charts-msg {
+    font-size: 20px;
+    text-align: center;
+}
+
 .modal-header {
     background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
     color: white;
