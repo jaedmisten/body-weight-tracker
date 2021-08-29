@@ -60,6 +60,8 @@ a.header-link {
 .charts-msg {
     font-size: 20px;
     text-align: center;
+    background-color: lightblue;
+    padding: 10px;
 }
 
 .modal-header {

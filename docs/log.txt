@@ -182,3 +182,7 @@ headers of the chart.
 
 
 8/27/21: Made updates to only show chart if there are at least five weight records.
+
+
+8/28/21: Fixed centering of chart being to the right. Put content on view weights page in separate bootstrap 
+rows and columns.
