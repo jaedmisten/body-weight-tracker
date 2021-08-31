@@ -186,3 +186,6 @@ headers of the chart.
 
 8/28/21: Fixed centering of chart being to the right. Put content on view weights page in separate bootstrap 
 rows and columns.
+
+
+8/29/21: Put content on add weights page in separate bootstrap rows and columns. Centered form by changing offsets.
