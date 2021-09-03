@@ -26,6 +26,18 @@ $(document).ready(function() {
             $('#editSubmit').prop('disabled', false);
         }
     }
+
+    $('#toggle-chart-link').click(function() {
+        let viewChartSetting = $('#toggle-chart-link').html();  
+        if (viewChartSetting == 'Hide Chart') {
+            $('#toggle-chart-link').html('Show Chart');
+            $('#chart-div').hide();
+        } else {
+            $('#toggle-chart-link').html('Hide Chart');
+            $('#chart-div').show()
+        }
+        
+    });
 });
 
 

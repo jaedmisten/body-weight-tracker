@@ -36,7 +36,10 @@ try {
 <?php  else: ?>
     <?php if (count($weights) >= 5): ?>
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2 center">
+                <a id="toggle-chart-link" href="#">Hide Chart</a>
+            </div>
+            <div id="chart-div" class="col-md-8 offset-md-2">
                 <div id="curve_chart" style="width: 900px; height: 500px"></div>
             </div>
         </div>
@@ -49,6 +52,7 @@ try {
     <?php endif; ?>
     <div class="row">
         <div class="col-md-6 offset-md-3">
+            <br>
             <table id="weights-table" class="table table-bordered table-striped table-sm" style="width:100%">
                 <thead class="thead-dark">
                     <tr>

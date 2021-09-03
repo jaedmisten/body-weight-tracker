@@ -188,4 +188,7 @@ headers of the chart.
 rows and columns.
 
 
-8/29/21: Put content on add weights page in separate bootstrap rows and columns. Centered form by changing offsets.
+8/30/21: Put content on add weights page in separate bootstrap rows and columns. Centered form by changing offsets.
+
+
+9/2/21: Added option to hide or show chart on view weights page.
