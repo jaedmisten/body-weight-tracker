@@ -192,3 +192,6 @@ rows and columns.
 
 
 9/2/21: Added option to hide or show chart on view weights page.
+
+
+9/7/21: Added database schema file 'body_weight_tracker.sql' to the project and created readme.md file.
