@@ -219,11 +219,6 @@ if (weightObjects.length >= 5) {
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-        let weightObjects = <?php echo json_encode($weights); ?>;
-        let weights = [['Date', 'Weight']];
-        for (let i = 0; i < weightObjects.length; i++) {
-            weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
-        }
         var data = google.visualization.arrayToDataTable(weights);
 
         var options = {

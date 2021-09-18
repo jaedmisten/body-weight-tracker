@@ -195,3 +195,7 @@ rows and columns.
 
 
 9/7/21: Added database schema file 'body_weight_tracker.sql' to the project and created readme.md file.
+
+9/18/21: Removed duplicate code for creating javascript array of weight records for google chart.
+Need to fix bug where sorting table by weight changing chart from horizontal line to vertical line. Javascript array
+for chart always needs to be sorted by date for line chart layout to be correct.
