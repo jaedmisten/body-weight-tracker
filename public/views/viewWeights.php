@@ -210,10 +210,18 @@ try {
 <script type="text/javascript">
 let weightObjects = <?php echo json_encode($weights); ?>;
 if (weightObjects.length >= 5) {
-    let weights = [['Date', 'Weight']];
+    let weights = [];
     for (let i = 0; i < weightObjects.length; i++) {
-        weights[i + 1] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
+        weights[i] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
     }
+    
+    let orderByCol = '<?php echo $orderByCol; ?>';
+    if (orderByCol === 'weight') {
+        weights.sort(function(a, b) {
+            return a[0] < b[0] ? 1 : -1;
+        });
+    } 
+    weights.unshift(['Date', 'Weight']);
     
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
