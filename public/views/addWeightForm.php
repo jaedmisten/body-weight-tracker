@@ -30,4 +30,14 @@
     </div>
 </div>
 <script src="../js/addWeightForm.js"></script>
+<script>
+jQuery(document).ready(function () {
+	'use strict';
+
+	jQuery('#datetimepicker').datetimepicker({
+        maxDate: '+1970/01/01',
+        format: 'm/d/Y H:i'
+    });
+});
+</script>
 <?php include('footer.php') ?>
