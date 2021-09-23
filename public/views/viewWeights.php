@@ -40,6 +40,10 @@ try {
                 <a id="toggle-chart-link" href="#">Hide Chart</a>
             </div>
             <div id="chart-div" class="col-md-8 offset-md-2">
+                From: <input type="text" id="fromDatetimepicker" class="form-control" name="dateTime" value="">
+                
+                To: <input type="text" id="toDatetimepicker" class="form-control" name="dateTime" value="">
+                
                 <div id="curve_chart" style="width: 900px; height: 500px"></div>
             </div>
         </div>
@@ -214,7 +218,7 @@ if (weightObjects.length >= 5) {
     for (let i = 0; i < weightObjects.length; i++) {
         weights[i] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
     }
-    
+    console.log('weights: ', weights);
     let orderByCol = '<?php echo $orderByCol; ?>';
     if (orderByCol === 'weight') {
         weights.sort(function(a, b) {
@@ -240,5 +244,45 @@ if (weightObjects.length >= 5) {
         chart.draw(data, options);
     }
 }
+</script>
+<script>
+jQuery(document).ready(function () {
+	'use strict';
+
+    let weightObjects = <?php echo json_encode($weights); ?>;
+    console.log('weightObjects: ', weightObjects);
+
+    let orderByCol = '<?php echo $orderByCol; ?>';
+    console.log('orderByCol: ', orderByCol);
+    let order = '<?php echo $order ?>';
+    console.log('order: ', order);
+
+    let date = '';
+    if (orderByCol == 'date' && order.toLowerCase() == 'asc') {
+        date = weightObjects[0]['date'];
+    } else if (orderByCol == 'date' && order.toLowerCase() == 'desc') {
+        date = weightObjects[weightObjects.length - 1]['date'];
+    } else {
+        console.log('SORTED BY WEIGHT');
+        weightObjects.sort(function(a, b) {
+            return a['date'] > b['date'] ? 1 : -1;
+        });
+        console.log('weightObjects: ', weightObjects);
+        date = weightObjects[0]['date'];
+    }
+    console.log('date: ', date);
+
+	jQuery('#fromDatetimepicker').datetimepicker({
+        minDate: date,
+        maxDate: '+1970/01/01',
+        format: 'm/d/Y'
+    });
+
+    jQuery('#toDatetimepicker').datetimepicker({
+        minDate: date,
+        maxDate: '+1970/01/01',
+        format: 'm/d/Y'
+    });
+});
 </script>
 <?php include('footer.php') ?>

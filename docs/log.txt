@@ -196,8 +196,16 @@ rows and columns.
 
 9/7/21: Added database schema file 'body_weight_tracker.sql' to the project and created readme.md file.
 
+
 9/18/21: Removed duplicate code for creating javascript array of weight records for google chart.
 
 Fixed bug where sorting table by weight changed chart from horizontal line to vertical line. Javascript array
 for chart always needs to be sorted by date for line chart layout to be correct. Made updates so that if PHP
 was sorting table by weights the javascript array would be sorted by date.
+
+
+9/21/21: Moved datetimepicker plugin that was used for add weight form from footer of project to the add weights page.
+
+
+9/23/21: Added to and from date pickers to weights chart to narrow results. Set the first selectable from date to 
+oldest date in weight records and last selectable to date to current day.
