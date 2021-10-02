@@ -208,4 +208,8 @@ was sorting table by weights the javascript array would be sorted by date.
 
 
 9/23/21: Added to and from date pickers to weights chart to narrow results. Set the first selectable from date to 
-oldest date in weight records and last selectable to date to current day.
+oldest date in weight records and last selectable to date to current day. Will Need to submit date ranges and 
+refresh chart.
+
+
+10/2/21: Added margin of 15px to main bootstrap container that is used on all pages.
