@@ -44,6 +44,7 @@ try {
                 
                 To: <input type="text" id="toDatetimepicker" class="form-control" name="dateTime" value="">
                 
+                <a id="updateGraph" type="button" class="btn btn-info">Get Results</a>
                 <div id="curve_chart" style="width: 900px; height: 500px"></div>
             </div>
         </div>
@@ -209,28 +210,17 @@ try {
         </div>
     </div>
 </div>
-
-<script src="../js/viewWeights.js"></script>
 <script type="text/javascript">
 let weightObjects = <?php echo json_encode($weights); ?>;
-if (weightObjects.length >= 5) {
-    let weights = [];
-    for (let i = 0; i < weightObjects.length; i++) {
-        weights[i] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
-    }
-    console.log('weights: ', weights);
-    let orderByCol = '<?php echo $orderByCol; ?>';
-    if (orderByCol === 'weight') {
-        weights.sort(function(a, b) {
-            return a[0] < b[0] ? 1 : -1;
-        });
-    } 
-    weights.unshift(['Date', 'Weight']);
-    
+</script>
+<script src="../js/viewWeights.js"></script>
+<script type="text/javascript">
+function loadChart(weights) {
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
+        console.log('drawChart called');
         var data = google.visualization.arrayToDataTable(weights);
 
         var options = {

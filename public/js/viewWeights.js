@@ -35,83 +35,112 @@ $(document).ready(function() {
         } else {
             $('#toggle-chart-link').html('Hide Chart');
             $('#chart-div').show()
+        }       
+    });
+   
+    if (weightObjects.length >= 5) {      
+        let weights = prepareChartData();
+        loadChart(weights);
+    }
+
+    function prepareChartData() {
+        let weights = [];
+        for (let i = 0; i < weightObjects.length; i++) {
+            weights[i] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
         }
+        console.log('weights: ', weights);
+        let orderByCol = '<?php echo $orderByCol; ?>';
+        if (orderByCol === 'weight') {
+            weights.sort(function(a, b) {
+                return a[0] < b[0] ? 1 : -1;
+            });
+        } 
+        weights.unshift(['Date', 'Weight']);
         
+        return weights;
+    }
+
+    $('#updateGraph').click(function() {
+        console.log('%cupdateGraph clicked', 'color:blue;font-size:15px;');
+        let fromDate = $('#fromDatetimepicker').val();
+        console.log('fromDate: ', fromDate);
+        let toDate = $('#toDatetimepicker').val();
+        console.log('toDate: ', toDate);
     });
-});
 
+  
+    let id, date, weight;
+    $('[id^=delete-button-]').click(function() {
+        id = $(this).data('id');
+        let date = $(this).data('date');
+        let weight = $(this).data('weight');
 
-let id, date, weight;
-$('[id^=delete-button-]').click(function() {
-    id = $(this).data('id');
-    let date = $(this).data('date');
-    let weight = $(this).data('weight');
-
-    $('#deleteWeightModal .modal-body .date').html(date);
-    $('#deleteWeightModal .modal-body .weight').html(weight);
-    $('#deleteWeightModal').modal('show');
-});
-
-$('#deleteConfirm').click(function() {
-    $.ajax({
-        url: '../deleteWeight.php',
-        type: 'post',
-        data: {id: id},
-        success: function (response) {
-            // Remove deleted weight record table row from view.
-            $('#table-row-' + id).remove();
-            
-            $('#deleteWeightModal').modal('hide');
-            $('#weightDeletedModal').modal('show');
-        },
-        error: function (response) {
-            $('#deleteWeightModal').modal('hide');
-            $('#errorDeletingWeightModal').modal('show');
-        }
+        $('#deleteWeightModal .modal-body .date').html(date);
+        $('#deleteWeightModal .modal-body .weight').html(weight);
+        $('#deleteWeightModal').modal('show');
     });
-});
 
-$('[id^=edit-button-]').click(function() {
-    id = $(this).data('id');
-    date = $(this).data('date');
-    weight = $(this).data('weight');
+    $('#deleteConfirm').click(function() {
+        $.ajax({
+            url: '../deleteWeight.php',
+            type: 'post',
+            data: {id: id},
+            success: function (response) {
+                // Remove deleted weight record table row from view.
+                $('#table-row-' + id).remove();
+                
+                $('#deleteWeightModal').modal('hide');
+                $('#weightDeletedModal').modal('show');
+            },
+            error: function (response) {
+                $('#deleteWeightModal').modal('hide');
+                $('#errorDeletingWeightModal').modal('show');
+            }
+        });
+    });
 
-    $('#editWeightModal .modal-body .datetime').val(date);
-    $('#editWeightModal .modal-body .weight').val(weight);
+    $('[id^=edit-button-]').click(function() {
+        id = $(this).data('id');
+        date = $(this).data('date');
+        weight = $(this).data('weight');
 
-    $('#editWeightModal').modal('show');
-});
+        $('#editWeightModal .modal-body .datetime').val(date);
+        $('#editWeightModal .modal-body .weight').val(weight);
 
-$('#editSubmit').click(function() {
-    let updatedDateTime = $('#datetimepicker').val();
-    let updatedWeight = $('#weightInput').val();
+        $('#editWeightModal').modal('show');
+    });
 
-    $.ajax({
-        url: '../updateWeight.php',
-        type: 'post',
-        data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
-        success: function (response) {
-            $('#editWeightModal').modal('hide');
-            $('#oldDateTime').html(date);
-            $('#oldWeight').html(weight);
-            $('#updatedDateTime').html(updatedDateTime);
-            $('#updatedWeight').html(updatedWeight);
+    $('#editSubmit').click(function() {
+        let updatedDateTime = $('#datetimepicker').val();
+        let updatedWeight = $('#weightInput').val();
 
-            // Update data in the table row.
-            $('#table-row-' + id + ' .td-date').html(updatedDateTime);
-            $('#table-row-' + id + ' .td-weight').html(updatedWeight);
+        $.ajax({
+            url: '../updateWeight.php',
+            type: 'post',
+            data: {id: id, dateTime: updatedDateTime, weight: updatedWeight},
+            success: function (response) {
+                $('#editWeightModal').modal('hide');
+                $('#oldDateTime').html(date);
+                $('#oldWeight').html(weight);
+                $('#updatedDateTime').html(updatedDateTime);
+                $('#updatedWeight').html(updatedWeight);
 
-            // Update data attributes for edit and delete buttons of updated table row.
-            $('#edit-button-' + id).data('date', updatedDateTime);
-            $('#edit-button-' + id).data('weight', updatedWeight);
-            $('#delete-button-' + id).data('date', updatedDateTime);
-            $('#delete-button-' + id).data('weight', updatedWeight);
+                // Update data in the table row.
+                $('#table-row-' + id + ' .td-date').html(updatedDateTime);
+                $('#table-row-' + id + ' .td-weight').html(updatedWeight);
 
-            $('#weightEditedModal').modal('show');
-        },
-        error: function (response) {
-            $('#editWeightModal').modal('hide');
-            $('#errorEditingWeightModal').modal('show');         
-        }
+                // Update data attributes for edit and delete buttons of updated table row.
+                $('#edit-button-' + id).data('date', updatedDateTime);
+                $('#edit-button-' + id).data('weight', updatedWeight);
+                $('#delete-button-' + id).data('date', updatedDateTime);
+                $('#delete-button-' + id).data('weight', updatedWeight);
+
+                $('#weightEditedModal').modal('show');
+            },
+            error: function (response) {
+                $('#editWeightModal').modal('hide');
+                $('#errorEditingWeightModal').modal('show');         
+            }
+        });
     });
 });

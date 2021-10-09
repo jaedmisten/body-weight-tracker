@@ -213,3 +213,9 @@ refresh chart.
 
 
 10/2/21: Added margin of 15px to main bootstrap container that is used on all pages.
+
+
+10/5/21: Moved functionality for configuring chart data to be outside of loading chart and drawing chart code blocks.
+This functionality to prepare data for chart is now in prepareChartData() function. This way prepareChartData() can
+be called and then loadChart() can be called with the prepared data.
+Created event listener for clicking button to narrow to and from dates of chart.
