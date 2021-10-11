@@ -224,3 +224,8 @@ Created event listener for clicking button to narrow to and from dates of chart.
 10/10/21: Added code for charts to and from date pickers to narrow down date range on chart. 
 Need to update style of date selectors. They are currenlty too wide and should probably fit on one line.
 Need to add error response if there is issue with dates selected.
+
+
+10/11/21: The date time picker was not working when editing a weight record because I removed the date time picker
+plugin from the footer of the app and just moved it to the add weight record page. Added the date time picker
+plugin to the view weights page to fix this.

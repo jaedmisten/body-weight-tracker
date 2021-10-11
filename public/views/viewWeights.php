@@ -242,6 +242,7 @@ function loadChart(weights) {
 jQuery(document).ready(function () {
 	'use strict';
 
+    // Get first used date for weight record.
     let date = '';
     if (orderByCol == 'date' && order.toLowerCase() == 'asc') {
         date = weightObjects[0]['date'];
@@ -254,6 +255,7 @@ jQuery(document).ready(function () {
         date = weightObjects[0]['date'];
     }
 
+    // Date time pickers for line chart.
 	jQuery('#fromDatetimepicker').datetimepicker({
         minDate: date,
         maxDate: '+1970/01/01',
@@ -264,6 +266,17 @@ jQuery(document).ready(function () {
         minDate: date,
         maxDate: '+1970/01/01',
         format: 'm/d/Y'
+    });
+});
+</script>
+<script>
+// Date time picker for edit weight modal.
+jQuery(document).ready(function () {
+	'use strict';
+
+	jQuery('#datetimepicker').datetimepicker({
+        maxDate: '+1970/01/01',
+        format: 'm/d/Y H:i'
     });
 });
 </script>
