@@ -39,33 +39,42 @@ $(document).ready(function() {
     });
    
     if (weightObjects.length >= 5) {      
-        let weights = prepareChartData();
+        let weights = prepareChartData(null);
         loadChart(weights);
     }
 
-    function prepareChartData() {
+    function prepareChartData(weightData) {
+        let weightObjs = weightData || weightObjects;
         let weights = [];
-        for (let i = 0; i < weightObjects.length; i++) {
-            weights[i] = [ new Date(weightObjects[i].date), parseFloat(weightObjects[i].weight) ];
+        for (let i = 0; i < weightObjs.length; i++) {
+            weights[i] = [ new Date(weightObjs[i].date), parseFloat(weightObjs[i].weight) ];
         }
-        console.log('weights: ', weights);
-        let orderByCol = '<?php echo $orderByCol; ?>';
         if (orderByCol === 'weight') {
             weights.sort(function(a, b) {
                 return a[0] < b[0] ? 1 : -1;
             });
         } 
         weights.unshift(['Date', 'Weight']);
-        
+
         return weights;
     }
 
     $('#updateGraph').click(function() {
-        console.log('%cupdateGraph clicked', 'color:blue;font-size:15px;');
-        let fromDate = $('#fromDatetimepicker').val();
-        console.log('fromDate: ', fromDate);
-        let toDate = $('#toDatetimepicker').val();
-        console.log('toDate: ', toDate);
+        let dateFrom = $('#fromDatetimepicker').val();
+        let dateTo = $('#toDatetimepicker').val() + ' 23:59:59';
+
+        $.ajax({
+            url: '../getDateWeights.php',
+            type: 'post',
+            data: {dateFrom: dateFrom, dateTo: dateTo, orderByCol: orderByCol, order: order},
+            success: function (response) {
+                let weights = prepareChartData(JSON.parse(response));
+                loadChart(weights);
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
     });
 
   

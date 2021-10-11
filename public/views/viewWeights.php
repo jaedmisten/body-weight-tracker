@@ -210,8 +210,12 @@ try {
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
+// Declare global javascript variables.
 let weightObjects = <?php echo json_encode($weights); ?>;
+let orderByCol = '<?php echo $orderByCol; ?>';
+let order = '<?php echo $order; ?>';
 </script>
 <script src="../js/viewWeights.js"></script>
 <script type="text/javascript">
@@ -220,7 +224,6 @@ function loadChart(weights) {
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-        console.log('drawChart called');
         var data = google.visualization.arrayToDataTable(weights);
 
         var options = {
@@ -239,28 +242,17 @@ function loadChart(weights) {
 jQuery(document).ready(function () {
 	'use strict';
 
-    let weightObjects = <?php echo json_encode($weights); ?>;
-    console.log('weightObjects: ', weightObjects);
-
-    let orderByCol = '<?php echo $orderByCol; ?>';
-    console.log('orderByCol: ', orderByCol);
-    let order = '<?php echo $order ?>';
-    console.log('order: ', order);
-
     let date = '';
     if (orderByCol == 'date' && order.toLowerCase() == 'asc') {
         date = weightObjects[0]['date'];
     } else if (orderByCol == 'date' && order.toLowerCase() == 'desc') {
         date = weightObjects[weightObjects.length - 1]['date'];
     } else {
-        console.log('SORTED BY WEIGHT');
         weightObjects.sort(function(a, b) {
             return a['date'] > b['date'] ? 1 : -1;
         });
-        console.log('weightObjects: ', weightObjects);
         date = weightObjects[0]['date'];
     }
-    console.log('date: ', date);
 
 	jQuery('#fromDatetimepicker').datetimepicker({
         minDate: date,

@@ -219,3 +219,8 @@ refresh chart.
 This functionality to prepare data for chart is now in prepareChartData() function. This way prepareChartData() can
 be called and then loadChart() can be called with the prepared data.
 Created event listener for clicking button to narrow to and from dates of chart.
+
+
+10/10/21: Added code for charts to and from date pickers to narrow down date range on chart. 
+Need to update style of date selectors. They are currenlty too wide and should probably fit on one line.
+Need to add error response if there is issue with dates selected.
