@@ -36,15 +36,24 @@ try {
 <?php  else: ?>
     <?php if (count($weights) >= 5): ?>
         <div class="row">
-            <div class="col-md-8 offset-md-2 center">
+            <div class="col-md-8 offset-md-2 center" style="margin-bottom:14px;">
                 <a id="toggle-chart-link" href="#">Hide Chart</a>
             </div>
             <div id="chart-div" class="col-md-8 offset-md-2">
-                From: <input type="text" id="fromDatetimepicker" class="form-control" name="dateTime" value="">
-                
-                To: <input type="text" id="toDatetimepicker" class="form-control" name="dateTime" value="">
-                
-                <a id="updateGraph" type="button" class="btn btn-info">Get Results</a>
+                <div class="row offset-md-2">
+                    <div>Filter Chart Dates: </div>
+                    <label for="fromDatetimepicker" class="col-sm-1 col-form-label">From:</label>
+                    <div class="col-sm-2">
+                        <input type="text" id="fromDatetimepicker" class="form-control" name="dateTime" value="">
+                    </div>
+                    <label for="toDatetimepicker" class="col-sm-1 col-form-label">To:</label> 
+                    <div class="col-sm-2">
+                        <input type="text" id="toDatetimepicker" class="form-control" name="dateTime" value="">
+                    </div>
+                    <div class="col-sm-3">
+                        <a id="updateGraph" type="button" class="btn btn-secondary">Submit</a>
+                    </div>
+                </div>
                 <div id="curve_chart" style="width: 900px; height: 500px"></div>
             </div>
         </div>

@@ -229,3 +229,6 @@ Need to add error response if there is issue with dates selected.
 10/11/21: The date time picker was not working when editing a weight record because I removed the date time picker
 plugin from the footer of the app and just moved it to the add weight record page. Added the date time picker
 plugin to the view weights page to fix this.
+
+Updated line chart date filter form to be on one line. Need to make updates to have the spacing of from
+and to words and the space to the date pickers to be consistent.
