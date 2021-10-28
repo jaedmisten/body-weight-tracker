@@ -232,3 +232,8 @@ plugin to the view weights page to fix this.
 
 Updated line chart date filter form to be on one line. Need to make updates to have the spacing of from
 and to words and the space to the date pickers to be consistent.
+
+
+10/28/21: Changed size of filter chart date pickers input boxes from bootstraps col-sm-2 to col-sm-3.
+On add weights page, put a line break between "Date and Time" and the format it needs to be in to keep the line from
+expanding past the text box.

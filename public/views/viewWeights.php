@@ -43,11 +43,11 @@ try {
                 <div class="row offset-md-2">
                     <div>Filter Chart Dates: </div>
                     <label for="fromDatetimepicker" class="col-sm-1 col-form-label">From:</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <input type="text" id="fromDatetimepicker" class="form-control" name="dateTime" value="">
                     </div>
                     <label for="toDatetimepicker" class="col-sm-1 col-form-label">To:</label> 
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <input type="text" id="toDatetimepicker" class="form-control" name="dateTime" value="">
                     </div>
                     <div class="col-sm-3">
