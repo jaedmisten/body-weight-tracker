@@ -13,8 +13,10 @@ if (isset($_POST["dateFrom"]) && $_POST["dateFrom"] != "" && strtotime($_POST["d
         $weightRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($weightRows);
     } catch (PDOException $e) {
-        header('HTTP/1.1 500 Retrieval Of Weight Record Failed');
-        var_dump($e);
+        error_log("Error inserting new weight data.", 0);
+        error_log($e->getMessage());
+        error_log($e->getTraceAsString());
+        header('HTTP/1.1 500 Retrieval Of Weight Records Failed');
     }
 }
 

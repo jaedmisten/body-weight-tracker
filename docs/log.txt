@@ -242,3 +242,5 @@ expanding past the text box.
 11/13/21: Added error logging to View Weight page if error occurs when retrieving all data. An error message is 
 logged along with the exception message, and the call stack.
 Var_dumping the exception to the page has been removed.
+
+Added error logging to the rest of the php files that have CRUD sql statements.

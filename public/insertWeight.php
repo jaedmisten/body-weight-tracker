@@ -14,6 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $pdo->prepare($sql);
             $result = $stmt->execute([$weight, $dateTime]);
         } catch (PDOException $e) {
+            error_log("Error inserting new weight data.", 0);
+            error_log($e->getMessage());
+            error_log($e->getTraceAsString());
             header('HTTP/1.1 500 Insert Of Weight Record Failed');
         }
     } else {
