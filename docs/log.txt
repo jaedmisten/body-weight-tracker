@@ -244,3 +244,6 @@ logged along with the exception message, and the call stack.
 Var_dumping the exception to the page has been removed.
 
 Added error logging to the rest of the php files that have CRUD sql statements.
+
+
+11/15/21: Deleted unused getWeights.php file.
