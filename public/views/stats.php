@@ -22,17 +22,25 @@ try {
     $stmt->execute();
     $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Get average
+    // Get average, lowest weight, and highest weight.
     $total = 0;
+    $lowWeight = $weights[0];
+    $highWeight = $weights[0];
     for($i = 0; $i < count($weights); $i++) {
         $total += $weights[$i]['weight'];
+        if ($weights[$i]['weight'] < $lowWeight['weight']) {
+            $lowWeight = $weights[$i];
+        }
+        if ($weights[$i]['weight'] > $highWeight['weight']) {
+            $highWeight = $weights[$i];
+        }
     }
     $avg = $total / count($weights);
 
     // Get standard deviation
     $deviationTotal = 0;
     for ($i = 0; $i < count($weights); $i++) {
-        $deviationTotal += pow($weights[$i]['weight'], 2);
+        $deviationTotal += pow($weights[$i]['weight'] - $avg, 2);
     }
     $standardDeviation = sqrt($deviationTotal / count($weights));
 } catch (PDOException $e) {
@@ -43,7 +51,12 @@ try {
 ?>
 <div class="row">
     <div class="col-md-4 offset-md-4">
-        <p>Average Weight: <?php echo $avg; ?><br>Standard Deviation: <?php echo round($standardDeviation, 4); ?></p>
+        <p>
+            Average Weight: <?php echo $avg; ?>
+            <br>Standard Deviation: <?php echo round($standardDeviation, 4); ?>
+            <br>Lowest Weight: <?php echo $lowWeight['weight'] . ' lbs on ' . $lowWeight['date']; ?>
+            <br>Highest Weight: <?php echo $highWeight['weight'] . ' lbs on ' . $highWeight['date']; ?>
+        </p>
     </div>
 </div>
 <script>

@@ -250,3 +250,8 @@ Added error logging to the rest of the php files that have CRUD sql statements.
 
 
 11/25/21: Added a statistics page. Currently has body weight average and standard deviation.
+
+
+11/26/21: Fixed error with standard deviations. I was not subtracting the average from the current weight
+in the loop before squaring it.
+Added lowest weight and highest weight to the stats page.
