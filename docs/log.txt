@@ -247,3 +247,6 @@ Added error logging to the rest of the php files that have CRUD sql statements.
 
 
 11/15/21: Deleted unused getWeights.php file.
+
+
+11/25/21: Added a statistics page. Currently has body weight average and standard deviation.
