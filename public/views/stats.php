@@ -46,4 +46,9 @@ try {
         <p>Average Weight: <?php echo $avg; ?><br>Standard Deviation: <?php echo round($standardDeviation, 4); ?></p>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    $('#statsBtn').css('text-decoration', 'underline');
+});
+</script>
 <?php include('footer.php') ?>
