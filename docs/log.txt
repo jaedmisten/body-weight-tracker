@@ -255,3 +255,6 @@ Added error logging to the rest of the php files that have CRUD sql statements.
 11/26/21: Fixed error with standard deviations. I was not subtracting the average from the current weight
 in the loop before squaring it.
 Added lowest weight and highest weight to the stats page.
+Changed layout of stats to use a table.
+
+Changed page buttons header of site to be correctly centered.

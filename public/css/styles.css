@@ -1,9 +1,9 @@
-.center {
-    text-align: center;
-}
-
 body {
     background-color: #eee;
+}
+
+.center {
+    text-align: center;
 }
 
 .container {
@@ -78,4 +78,16 @@ a.header-link {
 .add-weight-error-msg {
     color: red;
     font-weight: bold;
+}
+
+#statsTable td {
+    font-size: 22px;
+}
+
+.statsTableTdTitle {
+    text-align: right;    
+}
+
+.statsTableTdStat {
+    text-align: left;
 }

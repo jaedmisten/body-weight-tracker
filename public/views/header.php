@@ -29,7 +29,7 @@
     </div>
     <br>
     <div class="row center">
-        <div class="col-md-3 offset-md-2"><a type="button" id="viewWeightsBtn" class="btn btn-primary gradient" href="/views/viewWeights.php">View Weights</a></div>
-        <div class="col-md-3"><a type="button" id="addWeightBtn" class="btn btn-primary gradient" href="/views/addWeightForm.php">Add Weight</a></div>
-        <div class="col-md-3"><a type="button" id="statsBtn" class="btn btn-primary gradient" href="/views/stats.php">Statistics</a></div>
+        <div class="col-md-2 offset-md-3"><a type="button" id="viewWeightsBtn" class="btn btn-primary gradient" href="/views/viewWeights.php">View Weights</a></div>
+        <div class="col-md-2"><a type="button" id="addWeightBtn" class="btn btn-primary gradient" href="/views/addWeightForm.php">Add Weight</a></div>
+        <div class="col-md-2"><a type="button" id="statsBtn" class="btn btn-primary gradient" href="/views/stats.php">Statistics</a></div>
     </div>

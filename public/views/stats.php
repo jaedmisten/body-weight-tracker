@@ -22,10 +22,11 @@ try {
     $stmt->execute();
     $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Get average, lowest weight, and highest weight.
+    // Get average, lowest weight, highest weight, and mode.
     $total = 0;
     $lowWeight = $weights[0];
     $highWeight = $weights[0];
+    $out = [];
     for($i = 0; $i < count($weights); $i++) {
         $total += $weights[$i]['weight'];
         if ($weights[$i]['weight'] < $lowWeight['weight']) {
@@ -34,8 +35,10 @@ try {
         if ($weights[$i]['weight'] > $highWeight['weight']) {
             $highWeight = $weights[$i];
         }
+        $out[] = $weights[$i]['weight'];
     }
     $avg = $total / count($weights);
+    $mode = array_key_first(array_count_values($out));
 
     // Get standard deviation
     $deviationTotal = 0;
@@ -50,13 +53,29 @@ try {
 }
 ?>
 <div class="row">
-    <div class="col-md-4 offset-md-4">
-        <p>
-            Average Weight: <?php echo $avg; ?>
-            <br>Standard Deviation: <?php echo round($standardDeviation, 4); ?>
-            <br>Lowest Weight: <?php echo $lowWeight['weight'] . ' lbs on ' . $lowWeight['date']; ?>
-            <br>Highest Weight: <?php echo $highWeight['weight'] . ' lbs on ' . $highWeight['date']; ?>
-        </p>
+    <div class="col-md-6 offset-md-4">
+        <table id="statsTable">
+            <tr>
+                <td class="statsTableTdTitle">Average:&nbsp;</td>
+                <td class="statsTableTdStat"><?php echo round($avg, 2) ?></td>
+            </tr>
+            <tr>
+                <td class="statsTableTdTitle">Standard Deviation:&nbsp;</td>
+                <td class="statsTableTdStat"><?php echo round($standardDeviation, 4); ?></td>
+            </tr>
+            <tr>
+                <td class="statsTableTdTitle">Lowest Weight:&nbsp;</td>
+                <td class="statsTableTdStat"><?php echo $lowWeight['weight'] . ' lbs on ' . date("m/d/Y H:i", strtotime($lowWeight['date'])); ?></td>
+            </tr>
+            <tr>
+                <td class="statsTableTdTitle">Highest Weight:&nbsp;</td>
+                <td class="statsTableTdStat"><?php echo $highWeight['weight'] . ' lbs on ' . date("m/d/Y H:i", strtotime($highWeight['date'])); ?></td>
+            </tr>
+            <tr>
+                <td class="statsTableTdTitle">Mode:&nbsp;</td>
+                <td class="statsTableTdStat"><?php echo $mode; ?></td>
+            </tr>
+        </table>
     </div>
 </div>
 <script>
