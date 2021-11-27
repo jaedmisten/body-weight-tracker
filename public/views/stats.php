@@ -22,36 +22,49 @@ try {
     $stmt->execute();
     $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Get average, lowest weight, highest weight, and mode.
-    $total = 0;
-    $lowWeight = $weights[0];
-    $highWeight = $weights[0];
-    $out = [];
-    for($i = 0; $i < count($weights); $i++) {
-        $total += $weights[$i]['weight'];
-        if ($weights[$i]['weight'] < $lowWeight['weight']) {
-            $lowWeight = $weights[$i];
+    if (count($weights) >= 3) {
+        // Get average, lowest weight, highest weight, and mode.
+        $total = 0;
+        $lowWeight = $weights[0];
+        $highWeight = $weights[0];
+        $out = [];
+        for($i = 0; $i < count($weights); $i++) {
+            $total += $weights[$i]['weight'];
+            if ($weights[$i]['weight'] < $lowWeight['weight']) {
+                $lowWeight = $weights[$i];
+            }
+            if ($weights[$i]['weight'] > $highWeight['weight']) {
+                $highWeight = $weights[$i];
+            }
+            $out[] = $weights[$i]['weight'];
         }
-        if ($weights[$i]['weight'] > $highWeight['weight']) {
-            $highWeight = $weights[$i];
-        }
-        $out[] = $weights[$i]['weight'];
-    }
-    $avg = $total / count($weights);
-    $mode = array_key_first(array_count_values($out));
+        $avg = $total / count($weights);
+        $mode = array_key_first(array_count_values($out));
 
-    // Get standard deviation
-    $deviationTotal = 0;
-    for ($i = 0; $i < count($weights); $i++) {
-        $deviationTotal += pow($weights[$i]['weight'] - $avg, 2);
-    }
-    $standardDeviation = sqrt($deviationTotal / count($weights));
+        // Get standard deviation
+        $deviationTotal = 0;
+        for ($i = 0; $i < count($weights); $i++) {
+            $deviationTotal += pow($weights[$i]['weight'] - $avg, 2);
+        }
+        $standardDeviation = sqrt($deviationTotal / count($weights));
+    }   
 } catch (PDOException $e) {
     error_log("Error retrieving view weights data.", 0);
     error_log($e->getMessage());
     error_log($e->getTraceAsString());
 }
 ?>
+<?php if (count($weights) < 3): ?>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <p class="empty-weights-msg">
+                There <?php echo (count($weights) == 1) ? "is" : "are" ?> currently <?php echo count($weights); ?> weight record<?php if(count($weights) != 1) echo "s"; ?>.<br>
+                There needs to be at least 3 weight records to display statistics.<br>
+                Please click the Add Weight button to submit a weight record.
+            </p>
+        </div>
+    </div>
+<?php else: ?>
 <div class="row">
     <div class="col-md-6 offset-md-4">
         <table id="statsTable">
@@ -78,6 +91,7 @@ try {
         </table>
     </div>
 </div>
+<?php endif; ?>
 <script>
 $(document).ready(function() {
     $('#statsBtn').css('text-decoration', 'underline');

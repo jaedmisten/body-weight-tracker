@@ -258,3 +258,7 @@ Added lowest weight and highest weight to the stats page.
 Changed layout of stats to use a table.
 
 Changed page buttons header of site to be correctly centered.
+
+
+11/27/21: Updated statistics page to only show stats if there is at least three weight records and to  show 
+a message if there is less than three weight records. 
