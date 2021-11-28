@@ -7,17 +7,7 @@
 </div>
 <?php
 try {
-    if (!empty($_GET['orderByCol']) && (strtolower($_GET['orderByCol']) == 'date' || strtolower($_GET['orderByCol']) == 'weight')) {
-        $orderByCol = $_GET['orderByCol'];
-    } else {
-        $orderByCol = 'date';
-    }
-    if (!empty($_GET['order']) && (strtolower($_GET['order']) == 'asc' || strtolower($_GET['order']) == 'desc')) {
-        $order = $_GET['order'];
-    } else {
-        $order = 'DESC';
-    }
-    $sql = 'SELECT * FROM weights ORDER BY ' . $orderByCol . ' ' . $order;
+    $sql = 'SELECT * FROM weights';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +29,11 @@ try {
             $out[] = $weights[$i]['weight'];
         }
         $avg = $total / count($weights);
-        $mode = array_key_first(array_count_values($out));
+        $weightCounts = array_count_values($out);
+        arsort($weightCounts);
+        if ($weightCounts[array_key_first($weightCounts)] > 1) {
+            $mode = array_key_first($weightCounts);
+        }
 
         // Get standard deviation
         $deviationTotal = 0;
@@ -84,10 +78,12 @@ try {
                 <td class="statsTableTdTitle">Highest Weight:&nbsp;</td>
                 <td class="statsTableTdStat"><?php echo $highWeight['weight'] . ' lbs on ' . date("m/d/Y H:i", strtotime($highWeight['date'])); ?></td>
             </tr>
+            <?php if(isset($mode)): ?>
             <tr>
                 <td class="statsTableTdTitle">Mode:&nbsp;</td>
                 <td class="statsTableTdStat"><?php echo $mode; ?></td>
             </tr>
+            <?php endif; ?>
         </table>
     </div>
 </div>

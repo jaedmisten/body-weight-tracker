@@ -262,3 +262,7 @@ Changed page buttons header of site to be correctly centered.
 
 11/27/21: Updated statistics page to only show stats if there is at least three weight records and to  show 
 a message if there is less than three weight records. 
+
+
+11/28/21: Fixed issue on stats page with getting incorrect mode and only have mode if the weight appears
+more than once.
