@@ -47,7 +47,7 @@ try {
                     <div class="col-sm-3">
                         <input type="text" id="fromDatetimepicker" class="form-control" name="dateTime" value="">
                     </div>
-                    <label for="toDatetimepicker" class="col-sm-1 col-form-label">To:</label> 
+                    <label for="toDatetimepicker" class="col-sm-1 col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To:</label> 
                     <div class="col-sm-3">
                         <input type="text" id="toDatetimepicker" class="form-control" name="dateTime" value="">
                     </div>
