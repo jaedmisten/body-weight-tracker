@@ -270,3 +270,5 @@ more than once.
 
 12/16/21: Added &nbsp; html entities in front of the To picker on the chart filter to even up the spacing
 to make it match the from picker.
+
+Made update to prevent a new added weight from being 0 or a negative number.

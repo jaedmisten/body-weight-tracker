@@ -22,7 +22,7 @@ $(document).ready(function() {
     });
 
     function verifyInput(date, weight) {
-        if (isNaN(weight) || weight == "" || new Date(date) == "Invalid Date") {
+        if (isNaN(weight) || weight == "" || weight <= 0 || new Date(date) == "Invalid Date") {
             $('#submit').prop('disabled', true);
         } else {
             $('#submit').prop('disabled', false);
