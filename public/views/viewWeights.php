@@ -169,7 +169,7 @@ try {
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="weight" class="col-sm-3 col-form-label">Weight (LBS)</label>
+                        <label for="weightInput" class="col-sm-3 col-form-label">Weight (LBS)</label>
                         <div class="col-sm-10">
                             <input type="number" id="weightInput" step=".1" class="form-control weight" name="weight" value="">
                         </div>
