@@ -272,3 +272,10 @@ more than once.
 to make it match the from picker.
 
 Made update to prevent a new added weight from being 0 or a negative number.
+
+
+5/4/2024: Made update so that when sorting by weights the order will be by weight value first and then date
+in descending order.
+The below queries are now used when sorting by weight.
+SELECT * FROM weights ORDER BY weight DESC, date DESC
+SELECT * FROM weights ORDER BY weight ASC, date DESC

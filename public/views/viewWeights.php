@@ -19,6 +19,9 @@ try {
         $order = 'DESC';
     }
     $sql = 'SELECT * FROM weights ORDER BY ' . $orderByCol . ' ' . $order;
+    if ($orderByCol === 'weight') {
+        $sql .= ', date DESC';
+    }
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $weights = $stmt->fetchAll(PDO::FETCH_ASSOC);
