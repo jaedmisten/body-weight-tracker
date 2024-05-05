@@ -279,3 +279,6 @@ in descending order.
 The below queries are now used when sorting by weight.
 SELECT * FROM weights ORDER BY weight DESC, date DESC
 SELECT * FROM weights ORDER BY weight ASC, date DESC
+
+
+5/5/2024: Replaced youtube video on home page with video that is not age restriced.
